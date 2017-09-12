@@ -1,0 +1,18 @@
+<a
+  style="cursor: pointer;"
+  [routerLink]="[link]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <span class="pull-left">
+        <img
+          [src]="result.snippet.thumbnails.default.url"
+          alt="{{ result.snippet.thumbnails.default.url }}"
+          class="img-responsive"
+          style="max-height: 150px;">
+      </span>
+  <div class="pull-right">
+    <h4 class="list-group-item-heading">{{ result.snippet.title }}</h4>
+    <p class="list-group-item-text">{{ result.snippet.description }}</p>
+  </div>
+
+</a>
