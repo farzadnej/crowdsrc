@@ -1,1 +1,12 @@
-<iframe width="560" height="315" [src]="source | safe" frameborder="0" allowfullscreen></iframe>
+<!--<iframe width="560" height="315" [src]="source | safe" frameborder="0" allowfullscreen></iframe>-->
+
+
+<youtube-player
+  [videoId]="id"
+  [width]="1280"
+  [height]="960"
+  (ready)="savePlayer($event)"
+  (change)="onStateChange($event)"
+></youtube-player>
+
+<div id="pauseSpinner" *ngIf="paused"></div>

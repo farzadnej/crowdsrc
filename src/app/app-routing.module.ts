@@ -5,7 +5,7 @@ import { YoutubeSearchComponent } from './youtube/youtube-search/youtube-search.
 import { YoutubeListComponent } from './youtube/youtube-list/youtube-list.component';
 import {AuthGuard} from "./auth/auth.guard";
 import {PlayerComponent} from "./player/player.component";
-
+import {TestComponent} from "./test/test.component"
 
 
 const appRoutes: Routes = [
@@ -29,3 +29,4 @@ const appRoutes: Routes = [
   declarations: []
 })
 export class AppRoutingModule { }
+

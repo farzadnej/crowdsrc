@@ -14,6 +14,9 @@ import { YoutubeItemComponent } from './youtube/youtube-list/youtube-item/youtub
 import { PlayerComponent } from './player/player.component';
 import { SafePipe } from './player/safe.pipe';
 
+import { YoutubePlayerModule } from 'ng2-youtube-player';
+import {BackendService} from "./shared/backend.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +31,14 @@ import { SafePipe } from './player/safe.pipe';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    YoutubePlayerModule
   ],
-  providers: [SearchService, YoutubeapiService],
+  providers: [
+    SearchService,
+    YoutubeapiService,
+    BackendService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

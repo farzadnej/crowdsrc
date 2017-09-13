@@ -1,0 +1,11 @@
+#pauseSpinner {
+  background:url(http://www.broadwaybalancesamerica.com/images/ajax-loader.gif) center center no-repeat;
+  backgroundColor:'transparent';
+  border:     'none';
+  width: 87px;
+  height: 87px;
+  z-index: 200;
+  top: 300px;
+  left: 220px;
+  position: absolute;
+}
