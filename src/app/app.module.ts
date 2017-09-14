@@ -16,6 +16,15 @@ import { SafePipe } from './player/safe.pipe';
 
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 import {BackendService} from "./shared/backend.service";
+import { ConsentComponent } from './questionaires/consent/consent.component';
+import { HeaderComponent } from './header/header.component';
+import { LogosComponent } from './header/logos/logos.component';
+import { LoginComponent } from './header/login/login.component';
+import { BlockComponent } from './questionaires/block/block.component';
+import { YoutubeHeaderComponent } from './youtube/youtube-header/youtube-header.component';
+import { VideoQuestionaireComponent } from './questionaires/video-questionaire/video-questionaire.component';
+import { DemographicComponent } from './questionaires/demographic/demographic.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +34,15 @@ import {BackendService} from "./shared/backend.service";
     YoutubeListComponent,
     YoutubeItemComponent,
     PlayerComponent,
-    SafePipe
+    SafePipe,
+    ConsentComponent,
+    HeaderComponent,
+    LogosComponent,
+    LoginComponent,
+    BlockComponent,
+    YoutubeHeaderComponent,
+    VideoQuestionaireComponent,
+    DemographicComponent
   ],
   imports: [
     BrowserModule,

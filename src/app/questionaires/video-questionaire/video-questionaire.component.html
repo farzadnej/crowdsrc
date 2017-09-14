@@ -1,0 +1,35 @@
+<header>
+  <div id="uoft"><img src="/assets/images/uoft.png"/></div>
+  <div id="iml"><img src="/assets/images/iml.png"/></div>
+  <h3 class="headline-dbl text-center">Video Questionaire</h3>
+  <h1 id="blockHead" class="headline-dbl text-center"></h1>
+</header>
+
+<div class="body text-center">
+  <div class="text-justify">
+    <h3 id="selectAnswer" class="top0 bot20 text-center">Please answer all questions.</h3>
+
+    <ol type="1">
+      <li>How would you rate the technical quality of the video you just watched?  <br>
+        <input type="radio" name="quality" value="5"> Excellent <br>
+        <input type="radio" name="quality" value="4"> Good <br>
+        <input type="radio" name="quality" value="3"> Fair <br>
+        <input type="radio" name="quality" value="2"> Poor <br>
+        <input type="radio" name="quality" value="1"> Bad <br>
+      </li>
+      <li>Would you consider the technical quality of the video to be acceptable?  <br>
+        <input type="radio" name="acceptibility" value="1"> Yes <br>
+        <input type="radio" name="acceptibility" value="0"> No <br>
+      </li>
+      <li id="lastQuestion">Compared to the previous video, your viewing experience with this video is: <br>
+        <input type="radio" name="prev" value="2"> Much better <br>
+        <input type="radio" name="prev" value="1"> A little better <br>
+        <input type="radio" name="prev" value="0"> The same <br>
+        <input type="radio" name="prev" value="-1"> A little worse <br>
+        <input type="radio" name="prev" value="-2"> Much worse <br>
+      </li>
+    </ol>
+  </div>
+  <button id="submitBtn" class="top30 btn btn-primary btn-sm">Submit</button>
+  <button id="nextBtn" class="hide"></button>
+</div>

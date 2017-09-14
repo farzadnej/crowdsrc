@@ -61,6 +61,13 @@ export class PlayerComponent implements OnInit {
     },32000);
 
 
+
+
+    setTimeout(()=>{
+      this.router.navigate(['/demographic']);
+    },12000);
+
+
   }
   onStateChange(event){
     console.log('player state', event.data);
