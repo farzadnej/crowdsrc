@@ -12,12 +12,12 @@ import {DemographicComponent} from "./questionaires/demographic/demographic.comp
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
-  { path: 'player/:id', component: PlayerComponent },
+  { path: 'player/:id', component: PlayerComponent, canActivate: [AuthGuard] },
   { path: 'consent', component: ConsentComponent },
-  { path: 'block', component: BlockComponent },
-  { path: 'video-questionaire', component: VideoQuestionaireComponent },
-  { path: 'demographic', component: DemographicComponent },
-  { path: 'youtube', component: YoutubeComponent, children: [
+  { path: 'block', component: BlockComponent, canActivate: [AuthGuard] },
+  { path: 'video-questionaire', component: VideoQuestionaireComponent, canActivate:[AuthGuard]},
+  { path: 'demographic', component: DemographicComponent, canActivate: [AuthGuard] },
+  { path: 'youtube', component: YoutubeComponent, canActivate: [AuthGuard] ,children: [
     //{ path: '', component: YoutubeComponent },
     { path: 'new', component: YoutubeComponent },
     { path: ':id', component: YoutubeComponent },
