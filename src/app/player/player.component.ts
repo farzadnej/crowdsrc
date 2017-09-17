@@ -12,7 +12,7 @@ export class PlayerComponent implements OnInit {
   source: string;
 
   player: YT.Player;
-  private id: string;
+  id: string;
 
   lag: number = 0;
   plan;
