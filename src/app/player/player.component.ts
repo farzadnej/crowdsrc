@@ -64,8 +64,8 @@ export class PlayerComponent implements OnInit {
 
 
     setTimeout(()=>{
-      this.router.navigate(['/demographic']);
-    },12000);
+      this.router.navigate(['/video-questionaire']);
+    },25000);
 
 
   }
