@@ -25,6 +25,9 @@ import { YoutubeHeaderComponent } from './youtube/youtube-header/youtube-header.
 import { VideoQuestionaireComponent } from './questionaires/video-questionaire/video-questionaire.component';
 import { DemographicComponent } from './questionaires/demographic/demographic.component';
 import {AuthGuard} from "./auth/auth.guard";
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import {AuthService} from "./auth/auth.service";
 
 
 @NgModule({
@@ -43,7 +46,9 @@ import {AuthGuard} from "./auth/auth.guard";
     BlockComponent,
     YoutubeHeaderComponent,
     VideoQuestionaireComponent,
-    DemographicComponent
+    DemographicComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,8 @@ import {AuthGuard} from "./auth/auth.guard";
     SearchService,
     YoutubeapiService,
     BackendService,
-    AuthGuard
+    AuthGuard,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,14 +9,18 @@ import {ConsentComponent} from "./questionaires/consent/consent.component"
 import {BlockComponent} from "./questionaires/block/block.component"
 import {VideoQuestionaireComponent} from "./questionaires/video-questionaire/video-questionaire.component"
 import {DemographicComponent} from "./questionaires/demographic/demographic.component"
+import {SignupComponent} from "./auth/signup/signup.component"
+import {SigninComponent} from "./auth/signin/signin.component"
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
+  { path: 'signup', component: SignupComponent},
+  { path: 'signin', component: SigninComponent},
   { path: 'player/:id', component: PlayerComponent, canActivate: [AuthGuard] },
   { path: 'consent', component: ConsentComponent },
   { path: 'block', component: BlockComponent, canActivate: [AuthGuard] },
   { path: 'video-questionaire', component: VideoQuestionaireComponent, canActivate:[AuthGuard]},
-  { path: 'demographic', component: DemographicComponent, canActivate: [AuthGuard] },
+  { path: 'demographic', component: DemographicComponent},
   { path: 'youtube', component: YoutubeComponent, canActivate: [AuthGuard] ,children: [
     //{ path: '', component: YoutubeComponent },
     { path: 'new', component: YoutubeComponent },
