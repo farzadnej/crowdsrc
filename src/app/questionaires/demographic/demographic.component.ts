@@ -14,7 +14,7 @@ export class DemographicComponent implements OnInit {
   }
 
   onSubmit(){
-    this.router.navigate(['/youtube']);
+    this.router.navigate(['/signin']);
   }
 
 }
