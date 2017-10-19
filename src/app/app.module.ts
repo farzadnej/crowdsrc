@@ -28,6 +28,8 @@ import {AuthGuard} from "./auth/auth.guard";
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from "./auth/auth.service";
+import { SessionQuestionaireComponent } from './questionaires/session-questionaire/session-questionaire.component';
+import { SessionEndComponent } from './questionaires/session-end/session-end.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import {AuthService} from "./auth/auth.service";
     VideoQuestionaireComponent,
     DemographicComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    SessionQuestionaireComponent,
+    SessionEndComponent
   ],
   imports: [
     BrowserModule,

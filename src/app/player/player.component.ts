@@ -14,10 +14,10 @@ export class PlayerComponent implements OnInit {
   player: YT.Player;
   id: string;
 
-  lag: number = 0;
-  plan;
-  timerObj;
+  delay = 0;
   paused = false;
+  impairment:any;
+  videoState: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private backendService: BackendService) { }
 
@@ -29,10 +29,17 @@ export class PlayerComponent implements OnInit {
         console.log(this.source);
       }
     );
-    this.plan = this.backendService.getPlan();
+    //this.config = this.backendService.getConfig();
+    //this.plan = this.backendService.getPhase();
+    this.videoState = this.backendService.getVideoState();
+    this.impairment = this.backendService.getImpairment();
+    console.log("impair",this.impairment);
   }
 
+
+
   savePlayer (player) {
+    console.log('del0',this.delay);
     this.player = player;
     //this.player.setOption({
     //  height: '390',
@@ -40,32 +47,59 @@ export class PlayerComponent implements OnInit {
     //  videoId: 'M7lc1UVf-VE'
     // });
     this.player.playVideo();
+    let videoDuration = 1000 * (player.getDuration());
+    console.log('vid dur', videoDuration);
     console.log('player instance', player);
-    setTimeout(()=>{
-      this.freeze();
-    },3000);
-    setTimeout(()=>{
-      this.unfreeze();
-    },7000);
 
-    setTimeout(()=>{
-      this.freeze();
-    },15000);
+    if (this.videoState === 'A') {
+        this.freeze();
+        this.navigate(20000);
+    } else {
 
-    setTimeout(()=>{
-      this.unfreeze();
-    },23000);
+        let splitted = this.impairment.split(",");
+        let start = 0;
+         console.log('splitted len',splitted);
+        if (splitted.length != 1){
 
-    setTimeout(()=>{
-      this.freeze();
-    },32000);
+          for (let i = 0; i < splitted.length && start < videoDuration; i += 2) {
+            let freeze = (+ splitted[i]) * 1000;
+            let duration = ( +splitted[i + 1]) * 1000;
+            let start = freeze + this.delay;
+            console.log('del1',this.delay);
+            setTimeout(() => {
+              this.freeze();
+            }, start);
+            setTimeout(()=> {
+              this.unfreeze();
+            }, start + duration);
+            this.delay += duration;
+            console.log('del2',this.delay);
 
 
+            console.log(freeze);
+            console.log(duration);
+          }
+
+        }
+      if (this.videoState === 'I') {
+          this.navigate(this.delay + videoDuration);
+        console.log('del3',this.delay);
+      }
+      else if (this.videoState === 'R'){
+          let retainability = this.backendService.getRetainability();
+        setTimeout(() => {
+          this.freeze();
+        }, retainability + this.delay);
+        console.log('del4',this.delay);
+        console.log('chera', retainability, this.delay);
+      this.navigate(retainability + this.delay + 15000);
+        console.log('del5',this.delay);
+
+    }
+
+    }
 
 
-    setTimeout(()=>{
-      this.router.navigate(['/video-questionaire']);
-    },25000);
 
 
   }
@@ -81,6 +115,25 @@ export class PlayerComponent implements OnInit {
   unfreeze(){
     this.player.playVideo();
     this.paused = false;
+  }
+
+  navigate(when){
+    let questions = this.backendService.getQuestions();
+    let url = '';
+    if (questions.videoQ === "true") {
+      url = '/video-questionaire';
+    } else if (questions.blockQ === 'true') {
+      url = '/block-questionaire';
+    } else if (questions.sessionQ === "true") {
+      url = '/session-questionaire';
+    } else {
+      url = '/youtube';
+      this.backendService.setNextVideoConfig();
+    }
+
+    setTimeout(()=>{
+      this.router.navigate([url]);
+    }, when);
   }
 
 

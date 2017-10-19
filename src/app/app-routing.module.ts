@@ -11,6 +11,8 @@ import {VideoQuestionaireComponent} from "./questionaires/video-questionaire/vid
 import {DemographicComponent} from "./questionaires/demographic/demographic.component"
 import {SignupComponent} from "./auth/signup/signup.component"
 import {SigninComponent} from "./auth/signin/signin.component"
+import {SessionQuestionaireComponent} from "./questionaires/session-questionaire/session-questionaire.component"
+import {SessionEndComponent} from "./questionaires/session-end/session-end.component"
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
@@ -18,8 +20,10 @@ const appRoutes: Routes = [
   { path: 'signin', component: SigninComponent},
   { path: 'player/:id', component: PlayerComponent, canActivate: [AuthGuard] },
   { path: 'consent', component: ConsentComponent },
-  { path: 'block', component: BlockComponent, canActivate: [AuthGuard] },
+  { path: 'block-questionaire', component: BlockComponent, canActivate: [AuthGuard] },
   { path: 'video-questionaire', component: VideoQuestionaireComponent, canActivate:[AuthGuard]},
+  { path: 'session-questionaire', component: SessionQuestionaireComponent, canActivate:[AuthGuard]},
+  { path: 'session-end', component: SessionEndComponent, canActivate:[AuthGuard]},
   { path: 'demographic', component: DemographicComponent},
   { path: 'youtube', component: YoutubeComponent, canActivate: [AuthGuard] ,children: [
     //{ path: '', component: YoutubeComponent },

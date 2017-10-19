@@ -38,7 +38,7 @@ export class YoutubeapiService {
   //}
 
 
-  initialSearch(searchTerm) {
+  initialSearch(searchTerm,start, end) {
     // this.httpClient.get<Recipe[]>('https://ng-recipe-book-3adbb.firebaseio.com/recipes.json?auth=' + token)
     this.httpClient.get<Result>(this.searchUrl, {
       observe: 'body',
@@ -60,7 +60,7 @@ export class YoutubeapiService {
       .subscribe(
         (results: Result) => {
           this.rawResults = results;
-          this.durationFilter(3,5,results);
+          this.durationFilter(start, end,results);
         }
       );
   }
@@ -97,7 +97,7 @@ export class YoutubeapiService {
       )
       .subscribe(
         (results: Result) => {
-          results = this.filterResults(20,1000,results);
+          results = this.filterResults(start, end, results);
           this.searchService.setResults(results);
 
         }
