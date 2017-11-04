@@ -24,7 +24,7 @@ export class AppSettings {
       "sessionQ": "false",
       "min":"10",
       "max":"80",
-      "videoState":"R",
+      "videoState":"I",
       "retainability": "60",
       "impairment": "3,5,15,2,50,7"
     },

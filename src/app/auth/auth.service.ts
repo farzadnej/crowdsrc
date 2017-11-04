@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import 'rxjs/Rx';
 import {Router} from "@angular/router";
+import {BackendService} from "../shared/backend.service";
 
 
 @Injectable()
 export class AuthService {
   signupUrl = 'http://localhost:3000/api/signup';
   signinUrl = 'http://localhost:3000/api/signin';
-  bookUrl = 'http://localhost:3000/api/update';
+  updateUrl = 'http://localhost:3000/api/update';
   token: string;
 
   paramsObj = new HttpParams();
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient, private router: Router, private backendService: BackendService) {
   }
 
 
@@ -46,6 +47,7 @@ export class AuthService {
         (response: any) => {
           if (response.token) {
             this.token = response.token;
+            this.backendService.updateBuffer({ip:response.ip});
             this.router.navigate(['/youtube']);
           }
           else {
@@ -64,8 +66,26 @@ export class AuthService {
     return this.token != null;
   }
 
-  readsth(){
-    this.httpClient.put<any>(this.bookUrl, {data: 'lppp'}, {
+  addRow(row: string){
+    this.httpClient.post<any>(this.updateUrl, {statistics: {row:row}}, {
+      headers: new HttpHeaders().set('Authorization', this.token),
+    })
+      .map(
+        (response) => {
+          return response
+
+        }
+      )
+      .subscribe(
+        (token: any) => {
+          console.log(token);
+        }
+      );
+  }
+
+
+  updateRow(statistics:any){
+    this.httpClient.put<any>(this.updateUrl, {statistics: statistics}, {
       headers: new HttpHeaders().set('Authorization', this.token),
     })
       .map(

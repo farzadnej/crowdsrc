@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {BackendService} from "../shared/backend.service";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-player',
@@ -19,7 +20,8 @@ export class PlayerComponent implements OnInit {
   impairment:any;
   videoState: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private backendService: BackendService) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+              private backendService: BackendService, private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -46,6 +48,20 @@ export class PlayerComponent implements OnInit {
     //  width: '640',
     //  videoId: 'M7lc1UVf-VE'
     // });
+    //for logging purposes
+
+    //this.authService.updateRow({row: String(this.backendService.getPhase()), videoUrl: String (this.player.getVideoUrl()), videoDuration: String (this.player.getDuration())});
+    this.backendService.updateBuffer({row: String(this.backendService.getPhase()), videoUrl: String (this.player.getVideoUrl()),
+      videoDuration: String (this.player.getDuration())
+      //,PlaybackQuality: String (this.player.getPlaybackQuality()),
+      //AvailableQualityLevels: String (this.player.getAvailableQualityLevels())
+    });
+
+    //this.authService.updateRow({row: String(this.backendService.getPhase()), videoDuration: String (this.player.getDuration())});
+    //this.authService.updateRow({row: String(this.backendService.getPhase()), PlaybackQuality: String (this.player.getPlaybackQuality())});
+    //this.authService.updateRow({row: String(this.backendService.getPhase()), AvailableQualityLevels: String (this.player.getAvailableQualityLevels())});
+
+
     this.player.playVideo();
     let videoDuration = 1000 * (player.getDuration());
     console.log('vid dur', videoDuration);

@@ -23,9 +23,15 @@ export class SigninComponent implements OnInit {
 
   }
 
-    onRead(){
+    onAddRow(){
 
-      this.authService.readsth();
+      this.authService.addRow('1');
       //this.router.navigate(['/demographic']);
     }
+
+  onUpdateRow(){
+
+    this.authService.updateRow({row:'1', vidQuestionaire: 'from Button'});
+    //this.router.navigate(['/demographic']);
+  }
 }

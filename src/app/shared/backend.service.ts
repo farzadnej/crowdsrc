@@ -5,6 +5,7 @@ import {AppSettings} from "./app-settings";
 export class BackendService {
   phase: number = 0;
   //videoConfig = AppSettings.CONFIGURATION.find(x => x.number === String(this.phase));
+  dataBuffer: any = {};
 
   constructor() { }
 
@@ -40,6 +41,14 @@ export class BackendService {
   }
   getQuestions(){
     return {"videoQ" : this.getVideoConfig().videoQ, "blockQ" : this.getVideoConfig().blockQ, "sessionQ" : this.getVideoConfig().sessionQ}
+  }
+
+  updateBuffer(newData){
+    this.dataBuffer = { ...this.dataBuffer, ...newData };
+    console.log(this.dataBuffer);
+  }
+  getBuffer(){
+    return this.dataBuffer
   }
 
 }

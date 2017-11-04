@@ -5,6 +5,7 @@
   <h1 id="blockHead" class="headline-dbl text-center"></h1>
 </header>
 
+<form (ngSubmit)="onSubmit()" #f="ngForm">
 <div class="body text-center">
   <h3 id="selectAnswer" class="top0 bot20 text-center">Please answer all questions.</h3>
 
@@ -12,17 +13,18 @@
   <br>
   <ol type="1" class="text-justify">
     <li>Judging the last videos as a whole, how would you rate the Overall Technical Quality? <br>
-      <input type="radio" name="quality" value="5"> Excellent <br>
-      <input type="radio" name="quality" value="4"> Good <br>
-      <input type="radio" name="quality" value="3"> Fair <br>
-      <input type="radio" name="quality" value="2"> Poor <br>
-      <input type="radio" name="quality" value="1"> Bad <br>
+      <input type="radio" name="quality" value="5" ngModel> Excellent <br>
+      <input type="radio" name="quality" value="4" ngModel> Good <br>
+      <input type="radio" name="quality" value="3" ngModel> Fair <br>
+      <input type="radio" name="quality" value="2" ngModel> Poor <br>
+      <input type="radio" name="quality" value="1" ngModel> Bad <br>
     </li>
     <li>Judging the last videos, would you consider the Overall Technical Quality to be acceptable? <br>
-      <input type="radio" name="acceptibility" value="1"> Yes <br>
-      <input type="radio" name="acceptibility" value="0"> No <br>
+      <input type="radio" name="acceptibility" value="1" ngModel> Yes <br>
+      <input type="radio" name="acceptibility" value="0" ngModel> No <br>
     </li>
   </ol>
-  <button id="submitBtn" (click) = "onSubmit()" class="top30 btn btn-primary btn-sm">Submit</button>
+  <button class="top30 btn btn-primary btn-sm" type="submit" [disabled]="!f.valid">Submit</button>
   <button id="nextBtn" class="hide"></button>
 </div>
+</form>
