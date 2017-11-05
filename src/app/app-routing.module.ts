@@ -13,6 +13,9 @@ import {SignupComponent} from "./auth/signup/signup.component"
 import {SigninComponent} from "./auth/signin/signin.component"
 import {SessionQuestionaireComponent} from "./questionaires/session-questionaire/session-questionaire.component"
 import {SessionEndComponent} from "./questionaires/session-end/session-end.component"
+import {ConfigComponent} from "./admin/config/config.component"
+import {StatsComponent} from "./admin/stats/stats.component"
+import {AdminComponent} from "./admin/admin.component"
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
@@ -25,15 +28,17 @@ const appRoutes: Routes = [
   { path: 'session-questionaire', component: SessionQuestionaireComponent, canActivate:[AuthGuard]},
   { path: 'session-end', component: SessionEndComponent, canActivate:[AuthGuard]},
   { path: 'demographic', component: DemographicComponent},
-  { path: 'youtube', component: YoutubeComponent, canActivate: [AuthGuard] ,children: [
+  { path: 'youtube', component: YoutubeComponent, canActivate: [AuthGuard] , children: [
     //{ path: '', component: YoutubeComponent },
     { path: 'new', component: YoutubeComponent },
     { path: ':id', component: YoutubeComponent },
     { path: ':id/edit', component: YoutubeComponent },
   ] },
-  { path: 'shopping-list', component: YoutubeComponent },
-  { path: 'signup', component: YoutubeComponent },
-  { path: 'signin', component: YoutubeComponent },
+
+  { path: 'admin', component: AdminComponent ,canActivate: [AuthGuard], children: [
+    { path: 'config', component: ConfigComponent },
+    { path: 'stats', component: StatsComponent },
+  ] },
 ];
 
 

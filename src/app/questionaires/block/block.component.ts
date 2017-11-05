@@ -22,7 +22,7 @@ export class BlockComponent implements OnInit {
       blockAcceptibility:this.signupForm.value.acceptibility});
     let questions = this.backendService.getQuestions();
     let url = '';
-    if (questions.sessionQ === "true") {
+    if (questions.sessionQ === "Q100") {
       url = '/session-questionaire';
     } else {
       url = '/youtube';

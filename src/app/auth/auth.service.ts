@@ -10,11 +10,13 @@ export class AuthService {
   signupUrl = 'http://localhost:3000/api/signup';
   signinUrl = 'http://localhost:3000/api/signin';
   updateUrl = 'http://localhost:3000/api/update';
+  configUrl = 'http://localhost:3000/api/config';
   token: string;
+  config: any;
 
   paramsObj = new HttpParams();
 
-  constructor(private httpClient: HttpClient, private router: Router, private backendService: BackendService) {
+  constructor(private httpClient: HttpClient, private router: Router) {
   }
 
 
@@ -47,7 +49,8 @@ export class AuthService {
         (response: any) => {
           if (response.token) {
             this.token = response.token;
-            this.backendService.updateBuffer({ip:response.ip});
+            this.getConfigfromDatabase();
+            //this.backendService.updateBuffer({ip:response.ip});
             this.router.navigate(['/youtube']);
           }
           else {
@@ -65,6 +68,31 @@ export class AuthService {
   isAuthenticated() {
     return this.token != null;
   }
+
+
+  getConfigfromDatabase(){
+    this.httpClient.get<any>(this.configUrl, {
+      headers: new HttpHeaders().set('Authorization', this.token),
+    })
+      .map(
+        (response) => {
+          return response
+
+        }
+      )
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+          this.config = response.config;
+        }
+      );
+  }
+
+  getConfig(){
+    return this.config
+  }
+
+
 
   addRow(row: string){
     this.httpClient.post<any>(this.updateUrl, {statistics: {row:row}}, {

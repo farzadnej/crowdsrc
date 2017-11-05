@@ -22,9 +22,9 @@ export class VideoQuestionaireComponent implements OnInit {
       vidAcceptibility:this.signupForm.value.acceptibility,vidCompare:this.signupForm.value.prev});
     let questions = this.backendService.getQuestions();
     let url = '';
-    if (questions.blockQ === "true") {
+    if (questions.blockQ === "Q200") {
       url = '/block-questionaire';
-    } else if (questions.sessionQ === 'true') {
+    } else if (questions.sessionQ === 'Q100') {
       url = '/session-questionaire';
     } else {
       url = '/youtube';

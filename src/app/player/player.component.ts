@@ -136,11 +136,11 @@ export class PlayerComponent implements OnInit {
   navigate(when){
     let questions = this.backendService.getQuestions();
     let url = '';
-    if (questions.videoQ === "true") {
+    if (questions.videoQ === "Q300") {
       url = '/video-questionaire';
-    } else if (questions.blockQ === 'true') {
+    } else if (questions.blockQ === 'Q200') {
       url = '/block-questionaire';
-    } else if (questions.sessionQ === "true") {
+    } else if (questions.sessionQ === "Q100") {
       url = '/session-questionaire';
     } else {
       url = '/youtube';

@@ -30,6 +30,9 @@ import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from "./auth/auth.service";
 import { SessionQuestionaireComponent } from './questionaires/session-questionaire/session-questionaire.component';
 import { SessionEndComponent } from './questionaires/session-end/session-end.component';
+import { ConfigComponent } from './admin/config/config.component';
+import { StatsComponent } from './admin/stats/stats.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -52,7 +55,10 @@ import { SessionEndComponent } from './questionaires/session-end/session-end.com
     SignupComponent,
     SigninComponent,
     SessionQuestionaireComponent,
-    SessionEndComponent
+    SessionEndComponent,
+    ConfigComponent,
+    StatsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
