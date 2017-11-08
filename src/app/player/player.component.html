@@ -1,7 +1,7 @@
 <!--<iframe width="560" height="315" [src]="source | safe" frameborder="0" allowfullscreen></iframe>-->
 
 
-<youtube-player
+<youtube-player id="youtubePlayer" [ngStyle]="{ 'filter': getBrightness()}"
   [videoId]="id"
   [width]="854"
   [height]="640"
@@ -10,3 +10,4 @@
 ></youtube-player>
 
 <div id="pauseSpinner" *ngIf="paused"></div>
+<p id="networkFailureMessage" *ngIf="networkFailed" class="videoLayover">Network Failure</p>

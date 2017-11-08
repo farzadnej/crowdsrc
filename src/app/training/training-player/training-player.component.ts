@@ -26,7 +26,6 @@ export class TrainingPlayerComponent implements OnInit {
   isR = false;
   isN = false;
   isI = false;
-  bright = 'brightness(0%)';
 
   constructor(private route: ActivatedRoute, private router: Router,
               private TrainingService: TrainingService) {

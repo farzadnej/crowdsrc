@@ -19,6 +19,7 @@ export class PlayerComponent implements OnInit {
   paused = false;
   impairment:any;
   videoState: string;
+  networkFailed = false;
 
   constructor(private route: ActivatedRoute, private router: Router,
               private backendService: BackendService, private authService: AuthService) { }
@@ -69,6 +70,7 @@ export class PlayerComponent implements OnInit {
 
     if (this.videoState === 'A') {
         this.freeze();
+        this.showFailureMessage(10000);
         this.navigate(20000);
     } else {
 
@@ -108,7 +110,8 @@ export class PlayerComponent implements OnInit {
         }, retainability + this.delay);
         console.log('del4',this.delay);
         console.log('chera', retainability, this.delay);
-      this.navigate(retainability + this.delay + 15000);
+        this.showFailureMessage(retainability + this.delay + 15000);
+      this.navigate(retainability + this.delay + 25000);
         console.log('del5',this.delay);
 
     }
@@ -150,6 +153,24 @@ export class PlayerComponent implements OnInit {
     setTimeout(()=>{
       this.router.navigate([url]);
     }, when);
+  }
+
+  showFailureMessage(when) {
+    setTimeout(() => {
+      this.paused = false;
+      this.networkFailed = true;
+    }, when);
+
+  }
+
+  getBrightness(){
+    if (this.networkFailed){
+      return 'brightness(0%)'
+    }
+    else{
+      return 'brightness(100%)'
+    }
+
   }
 
 
