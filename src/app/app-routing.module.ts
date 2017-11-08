@@ -21,7 +21,7 @@ import {TrainingComponent} from "./training/training.component"
 import {SecondInstructionComponent} from "./training/second-instruction/second-instruction.component"
 import {TrainingPlayerComponent} from "./training/training-player/training-player.component"
 import {RateTrainingComponent} from "./training/rate-training/rate-training.component"
-
+import {Q301Component} from "./questionaires/q301/q301.component"
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent},
@@ -30,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'consent', component: ConsentComponent },
   { path: 'block-questionaire', component: BlockComponent, canActivate: [AuthGuard] },
   { path: 'video-questionaire', component: VideoQuestionaireComponent, canActivate:[AuthGuard]},
+  { path: 'q301', component: Q301Component, canActivate:[AuthGuard]},
   { path: 'session-questionaire', component: SessionQuestionaireComponent, canActivate:[AuthGuard]},
   { path: 'session-end', component: SessionEndComponent, canActivate:[AuthGuard]},
   { path: 'demographic', component: DemographicComponent},

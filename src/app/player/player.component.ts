@@ -141,6 +141,8 @@ export class PlayerComponent implements OnInit {
     let url = '';
     if (questions.videoQ === "Q300") {
       url = '/video-questionaire';
+    } else if (questions.videoQ === 'Q301') {
+      url = '/q301';
     } else if (questions.blockQ === 'Q200') {
       url = '/block-questionaire';
     } else if (questions.sessionQ === "Q100") {

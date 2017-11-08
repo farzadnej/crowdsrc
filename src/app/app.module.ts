@@ -39,6 +39,7 @@ import { SecondInstructionComponent } from './training/second-instruction/second
 import { TrainingPlayerComponent } from './training/training-player/training-player.component';
 import {TrainingService} from "./training/training.service";
 import { RateTrainingComponent } from './training/rate-training/rate-training.component';
+import { Q301Component } from './questionaires/q301/q301.component';
 
 
 
@@ -70,7 +71,8 @@ import { RateTrainingComponent } from './training/rate-training/rate-training.co
     TrainingComponent,
     SecondInstructionComponent,
     TrainingPlayerComponent,
-    RateTrainingComponent
+    RateTrainingComponent,
+    Q301Component
   ],
   imports: [
     BrowserModule,
