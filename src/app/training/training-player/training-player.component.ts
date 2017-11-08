@@ -26,6 +26,7 @@ export class TrainingPlayerComponent implements OnInit {
   isR = false;
   isN = false;
   isI = false;
+  bright = 'brightness(0%)';
 
   constructor(private route: ActivatedRoute, private router: Router,
               private TrainingService: TrainingService) {
@@ -153,8 +154,18 @@ export class TrainingPlayerComponent implements OnInit {
     else {
       this.isN = true;
     }
+  }
 
+  getBrightness(){
+    if (this.networkFailed){
+      return 'brightness(0%)'
+    }
+    else{
+      return 'brightness(100%)'
+    }
 
   }
+
+
 }
 

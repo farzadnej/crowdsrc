@@ -25,7 +25,10 @@
 }
 
 #youtubePlayer{
-  filter: brightness(30%);
+}
+.top20 {
+  margin-top:20px;
+  font-weight: bold;
 }
 
 
