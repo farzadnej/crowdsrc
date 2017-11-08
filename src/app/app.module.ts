@@ -33,6 +33,13 @@ import { SessionEndComponent } from './questionaires/session-end/session-end.com
 import { ConfigComponent } from './admin/config/config.component';
 import { StatsComponent } from './admin/stats/stats.component';
 import { AdminComponent } from './admin/admin.component';
+import { InstructionsComponent } from './training/instructions/instructions.component';
+import { TrainingComponent } from './training/training.component';
+import { SecondInstructionComponent } from './training/second-instruction/second-instruction.component';
+import { TrainingPlayerComponent } from './training/training-player/training-player.component';
+import {TrainingService} from "./training/training.service";
+import { RateTrainingComponent } from './training/rate-training/rate-training.component';
+
 
 
 @NgModule({
@@ -58,7 +65,12 @@ import { AdminComponent } from './admin/admin.component';
     SessionEndComponent,
     ConfigComponent,
     StatsComponent,
-    AdminComponent
+    AdminComponent,
+    InstructionsComponent,
+    TrainingComponent,
+    SecondInstructionComponent,
+    TrainingPlayerComponent,
+    RateTrainingComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +84,8 @@ import { AdminComponent } from './admin/admin.component';
     YoutubeapiService,
     BackendService,
     AuthGuard,
-    AuthService
+    AuthService,
+    TrainingService
   ],
   bootstrap: [AppComponent]
 })

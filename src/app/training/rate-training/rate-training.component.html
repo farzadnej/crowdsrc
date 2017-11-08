@@ -1,0 +1,29 @@
+<div class="container">
+  <header>
+    <div id="uoft"><img src="/assets/images/uoft.png"/></div>
+    <div id="iml"><img src="/assets/images/iml.png"/></div>
+    <h1 class="headline text-center">Rate Video</h1>
+  </header>
+
+  <div class="body text-center">
+    <div class="text-justify">
+      <h3 id="selectAnswer" class="top0 bot20 text-center">Please answer all questions.</h3>
+      <p class="bot0">How would you rate the technical quality of the video you just watched?</p>
+      <ul class="top5 pad0 left20">
+        <input type="radio" name="quality" value="5"> Excellent <br>
+        <input type="radio" name="quality" value="4"> Good <br>
+        <input type="radio" name="quality" value="3"> Fair <br>
+        <input type="radio" name="quality" value="2"> Poor <br>
+        <input type="radio" name="quality" value="1"> Bad <br>
+        <input type="radio" name="quality" value="0"> Terrible <br>
+      </ul>
+    </div>
+    <button id="submitBtn" class="top30 btn btn-primary btn-sm" (click)="onSubmit()">Next</button>
+    <button id="nextBtn" class="hide"></button>
+  </div>
+</div>
+
+
+
+
+

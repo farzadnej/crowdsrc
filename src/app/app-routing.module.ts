@@ -16,6 +16,11 @@ import {SessionEndComponent} from "./questionaires/session-end/session-end.compo
 import {ConfigComponent} from "./admin/config/config.component"
 import {StatsComponent} from "./admin/stats/stats.component"
 import {AdminComponent} from "./admin/admin.component"
+import {InstructionsComponent} from "./training/instructions/instructions.component"
+import {TrainingComponent} from "./training/training.component"
+import {SecondInstructionComponent} from "./training/second-instruction/second-instruction.component"
+import {TrainingPlayerComponent} from "./training/training-player/training-player.component"
+import {RateTrainingComponent} from "./training/rate-training/rate-training.component"
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
@@ -38,6 +43,14 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent ,canActivate: [AuthGuard], children: [
     { path: 'config', component: ConfigComponent },
     { path: 'stats', component: StatsComponent },
+  ] },
+
+  { path: 'training', component: TrainingComponent , children: [
+    { path: 'instructions', component: InstructionsComponent },
+    { path: 'secondInstruction', component: SecondInstructionComponent },
+    { path: 'player', component: TrainingPlayerComponent },
+    { path: 'rate', component: RateTrainingComponent },
+    { path: 'retainability', component: InstructionsComponent },
   ] },
 ];
 

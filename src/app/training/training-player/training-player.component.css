@@ -1,0 +1,31 @@
+#pauseSpinner {
+  background:url(http://www.broadwaybalancesamerica.com/images/ajax-loader.gif) center center no-repeat;
+  backgroundColor:'transparent';
+  border:     'none';
+  width: 87px;
+  height: 87px;
+  z-index: 200;
+  top: 390px;
+  left: 490px;
+  position: absolute;
+}
+
+.videoLayover{
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+#networkFailureMessage{
+  font-weight: 100;
+  font-size: 1.5em;
+  width: 70%;
+  color: white;
+  bottom: 305px;
+}
+
+#youtubePlayer{
+  filter: brightness(30%);
+}
+
+

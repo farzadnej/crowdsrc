@@ -1,0 +1,18 @@
+<!--<iframe width="560" height="315" [src]="source | safe" frameborder="0" allowfullscreen></iframe>-->
+
+
+<youtube-player id="youtubePlayer"
+                [videoId]="id"
+                [width]="854"
+                [height]="640"
+                (ready)="savePlayer($event)"
+                (change)="onStateChange($event)"
+></youtube-player>
+
+<div id="pauseSpinner" *ngIf="paused"></div>
+<p id="networkFailureMessage" *ngIf="networkFailed" class="videoLayover">Network Failure</p>
+
+<p *ngIf="isA">This is an example of a video that fails to start playing.</p>
+<p *ngIf="isI">This is an example of a video that has freezing interruptions.</p>
+<p *ngIf="isR">This is an example of a video that starts to play successfully, but fails before it is complete</p>
+<p *ngIf="isN">This is an example of a video with no interruptions or failures.</p>
