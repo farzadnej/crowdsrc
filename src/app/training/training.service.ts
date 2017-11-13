@@ -9,22 +9,22 @@ export class TrainingService {
       "number":"0",
       "id": "U_6BRY50Zmc",
       "videoState":"R",
-      "retainability": "10",
+      "retainability": "40",
       "impairment": ""
     },
     {
       "number":"1",
-      "id": "q3oiWDkjzOw",
-      "videoState":"I",
-      "retainability": "",
-      "impairment": "3,5,15,2,20,7"
-    },
-    {
-      "number":"2",
       "id": "sV2t3tW_JTQ",
       "videoState":"A",
       "retainability": "",
       "impairment": ""
+    },
+    {
+      "number":"2",
+      "id": "q3oiWDkjzOw",
+      "videoState":"I",
+      "retainability": "",
+      "impairment": "3,5,15,2,20,7"
     }
   ];
 
