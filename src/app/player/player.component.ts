@@ -51,12 +51,14 @@ export class PlayerComponent implements OnInit {
     // });
     //for logging purposes
 
-    //this.authService.updateRow({row: String(this.backendService.getPhase()), videoUrl: String (this.player.getVideoUrl()), videoDuration: String (this.player.getDuration())});
-    this.backendService.updateBuffer({row: String(this.backendService.getPhase()), videoUrl: String (this.player.getVideoUrl()),
+    this.authService.updateRow({row: String(this.backendService.getPhase()), videoUrl: String (this.player.getVideoUrl()), videoDuration: String (this.player.getDuration())});
+    /*this.backendService.updateBuffer({row: String(this.backendService.getPhase()), videoUrl: String (this.player.getVideoUrl()),
       videoDuration: String (this.player.getDuration())
+      });
+      */
       //,PlaybackQuality: String (this.player.getPlaybackQuality()),
       //AvailableQualityLevels: String (this.player.getAvailableQualityLevels())
-    });
+
 
     //this.authService.updateRow({row: String(this.backendService.getPhase()), videoDuration: String (this.player.getDuration())});
     //this.authService.updateRow({row: String(this.backendService.getPhase()), PlaybackQuality: String (this.player.getPlaybackQuality())});

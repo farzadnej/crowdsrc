@@ -18,8 +18,10 @@ export class VideoQuestionaireComponent implements OnInit {
   }
 
   onSubmit(){
-    this.backendService.updateBuffer({vidQuality:this.signupForm.value.quality,
-      vidAcceptibility:this.signupForm.value.acceptibility,vidCompare:this.signupForm.value.prev});
+    this.authService.updateRow({row: String(this.backendService.getPhase()), q300Quality:this.signupForm.value.quality,
+      q300Acceptibility:this.signupForm.value.acceptibility,q300Compare:this.signupForm.value.prev});
+    /*this.backendService.updateBuffer({vidQuality:this.signupForm.value.quality,
+      vidAcceptibility:this.signupForm.value.acceptibility,vidCompare:this.signupForm.value.prev}); */
     let questions = this.backendService.getQuestions();
     let url = '';
     if (questions.blockQ === "Q200") {

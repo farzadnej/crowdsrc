@@ -113,7 +113,7 @@ export class AuthService {
 
 
   updateRow(statistics:any){
-    this.httpClient.put<any>(this.updateUrl, {statistics: statistics}, {
+    this.httpClient.post<any>(this.updateUrl, {statistics: statistics}, {
       headers: new HttpHeaders().set('Authorization', this.token),
     })
       .map(

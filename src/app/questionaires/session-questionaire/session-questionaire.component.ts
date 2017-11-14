@@ -17,9 +17,11 @@ export class SessionQuestionaireComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(){
-    this.backendService.updateBuffer({sessionQuality:this.signupForm.value.quality,
+    this.authService.updateRow({row: String(this.backendService.getPhase()), sessionQuality:this.signupForm.value.quality,
       sessionAcceptibility:this.signupForm.value.acceptibility});
-    this.authService.updateRow(this.backendService.getBuffer());
+    /*this.backendService.updateBuffer({sessionQuality:this.signupForm.value.quality,
+      sessionAcceptibility:this.signupForm.value.acceptibility}); */
+    //this.authService.updateRow(this.backendService.getBuffer());
     this.router.navigate(['/session-end']);
     this.backendService.setNextVideoConfig();
   }

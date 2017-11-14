@@ -18,8 +18,10 @@ export class BlockComponent implements OnInit {
   }
 
   onSubmit(){
-    this.backendService.updateBuffer({blockQuality:this.signupForm.value.quality,
+    this.authService.updateRow({row: String(this.backendService.getPhase()), blockQuality:this.signupForm.value.quality,
       blockAcceptibility:this.signupForm.value.acceptibility});
+    /*this.backendService.updateBuffer({blockQuality:this.signupForm.value.quality,
+      blockAcceptibility:this.signupForm.value.acceptibility});*/
     let questions = this.backendService.getQuestions();
     let url = '';
     if (questions.sessionQ === "Q100") {
