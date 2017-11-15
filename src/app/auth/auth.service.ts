@@ -13,6 +13,8 @@ export class AuthService {
   configUrl = 'http://localhost:3000/api/config';
   token: string;
   config: any;
+  ip = '';
+  time= '';
 
   paramsObj = new HttpParams();
 
@@ -51,6 +53,8 @@ export class AuthService {
             this.token = response.token;
             this.getConfigfromDatabase();
             //this.backendService.updateBuffer({ip:response.ip});
+            this.ip = response.ip;
+            this.time = Date();
             this.router.navigate(['/youtube']);
           }
           else {
@@ -127,6 +131,13 @@ export class AuthService {
           console.log(token);
         }
       );
+  }
+
+  getIP(){
+    return this.ip
+  }
+  getTime(){
+    return this.time
   }
 
 

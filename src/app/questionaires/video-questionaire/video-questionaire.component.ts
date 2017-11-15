@@ -15,10 +15,11 @@ export class VideoQuestionaireComponent implements OnInit {
   constructor(private router:Router, private backendService: BackendService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.backendService.startTimer();
   }
 
   onSubmit(){
-    this.authService.updateRow({row: String(this.backendService.getPhase()), q300Quality:this.signupForm.value.quality,
+    this.authService.updateRow({row: String(this.backendService.getPhase()), q300Duration: this.backendService.getTimer(),q300Quality:this.signupForm.value.quality,
       q300Acceptibility:this.signupForm.value.acceptibility,q300Compare:this.signupForm.value.prev});
     /*this.backendService.updateBuffer({vidQuality:this.signupForm.value.quality,
       vidAcceptibility:this.signupForm.value.acceptibility,vidCompare:this.signupForm.value.prev}); */
@@ -30,7 +31,7 @@ export class VideoQuestionaireComponent implements OnInit {
       url = '/session-questionaire';
     } else {
       url = '/youtube';
-      this.authService.updateRow(this.backendService.getBuffer());
+      //this.authService.updateRow(this.backendService.getBuffer());
       this.backendService.setNextVideoConfig();
     }
     this.router.navigate([url]);

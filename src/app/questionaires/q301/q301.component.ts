@@ -15,9 +15,10 @@ export class Q301Component implements OnInit {
   constructor(private router:Router, private backendService: BackendService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.backendService.startTimer();
   }
   onSubmit(){
-    this.authService.updateRow({row: String(this.backendService.getPhase()), q301Quality:this.signupForm.value.quality,
+    this.authService.updateRow({row: String(this.backendService.getPhase()), q301Duration: this.backendService.getTimer(), q301Quality:this.signupForm.value.quality,
       q301Acceptibility:this.signupForm.value.acceptibility,q301Compare:this.signupForm.value.prev});
     /*this.backendService.updateBuffer({vidQuality:this.signupForm.value.quality,
       vidAcceptibility:this.signupForm.value.acceptibility,vidCompare:this.signupForm.value.prev}); */
@@ -29,7 +30,7 @@ export class Q301Component implements OnInit {
       url = '/session-questionaire';
     } else {
       url = '/youtube';
-      this.authService.updateRow(this.backendService.getBuffer());
+      //this.authService.updateRow(this.backendService.getBuffer());
       this.backendService.setNextVideoConfig();
     }
     this.router.navigate([url]);

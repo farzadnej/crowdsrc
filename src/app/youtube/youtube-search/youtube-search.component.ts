@@ -27,7 +27,8 @@ export class YoutubeSearchComponent implements OnInit {
     this.youtubeapiService.initialSearch(this.searchTerm, this.min, this.max);
     //this.youtubeapiService.durationFilter(3,10);
 
-    this.authService.updateRow({row: String(this.backendService.getPhase()), searchTerm: this.searchTerm});
+    this.authService.updateRow({row: String(this.backendService.getPhase()), time: this.authService.getTime(), ip: this.authService.getIP()
+      ,searchTerm: this.searchTerm});
     //this.backendService.updateBuffer({row: String(this.backendService.getPhase()), searchTerm: this.searchTerm});
   }
 

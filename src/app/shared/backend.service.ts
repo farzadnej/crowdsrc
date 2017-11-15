@@ -7,6 +7,8 @@ export class BackendService {
   phase: number = 1;
   //videoConfig = AppSettings.CONFIGURATION.find(x => x.number === String(this.phase));
   dataBuffer: any = {};
+  date:any;
+  dateInMs:any;
 
   constructor(private authService: AuthService) { }
 
@@ -117,6 +119,15 @@ export class BackendService {
   }
   getBuffer(){
     return this.dataBuffer
+  }
+  
+  startTimer(){
+    this.dateInMs = Date.now();
+    console.log('date', this.dateInMs)
+  }
+  getTimer(){
+    let now = Date.now();
+    return String(now - this.dateInMs)
   }
 
 }

@@ -15,9 +15,10 @@ export class SessionQuestionaireComponent implements OnInit {
   constructor(private router: Router, private backendService: BackendService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.backendService.startTimer();
   }
   onSubmit(){
-    this.authService.updateRow({row: String(this.backendService.getPhase()), sessionQuality:this.signupForm.value.quality,
+    this.authService.updateRow({row: String(this.backendService.getPhase()), sessionqDuration: this.backendService.getTimer(), sessionQuality:this.signupForm.value.quality,
       sessionAcceptibility:this.signupForm.value.acceptibility});
     /*this.backendService.updateBuffer({sessionQuality:this.signupForm.value.quality,
       sessionAcceptibility:this.signupForm.value.acceptibility}); */

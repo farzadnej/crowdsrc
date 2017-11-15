@@ -15,10 +15,11 @@ export class BlockComponent implements OnInit {
   constructor(private router: Router, private backendService: BackendService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.backendService.startTimer();
   }
 
   onSubmit(){
-    this.authService.updateRow({row: String(this.backendService.getPhase()), blockQuality:this.signupForm.value.quality,
+    this.authService.updateRow({row: String(this.backendService.getPhase()),blockqDuration: this.backendService.getTimer(), blockQuality:this.signupForm.value.quality,
       blockAcceptibility:this.signupForm.value.acceptibility});
     /*this.backendService.updateBuffer({blockQuality:this.signupForm.value.quality,
       blockAcceptibility:this.signupForm.value.acceptibility});*/
@@ -28,7 +29,7 @@ export class BlockComponent implements OnInit {
       url = '/session-questionaire';
     } else {
       url = '/youtube';
-      this.authService.updateRow(this.backendService.getBuffer());
+      //this.authService.updateRow(this.backendService.getBuffer());
       this.backendService.setNextVideoConfig();
     }
     this.router.navigate([url]);
