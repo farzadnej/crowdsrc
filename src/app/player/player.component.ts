@@ -66,6 +66,10 @@ export class PlayerComponent implements OnInit {
 
 
     this.player.playVideo();
+    setTimeout(()=>{
+      this.authService.updateRow({row: String(this.backendService.getPhase()), quality: this.player.getPlaybackQuality() });
+      //console.log('quality', this.player.getPlaybackQuality());
+    }, 15000);
     let videoDuration = 1000 * (player.getDuration());
     console.log('vid dur', videoDuration);
     console.log('player instance', player);
