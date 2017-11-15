@@ -120,7 +120,7 @@ export class BackendService {
   getBuffer(){
     return this.dataBuffer
   }
-  
+
   startTimer(){
     this.dateInMs = Date.now();
     console.log('date', this.dateInMs)
@@ -128,6 +128,10 @@ export class BackendService {
   getTimer(){
     let now = Date.now();
     return String(now - this.dateInMs)
+  }
+
+  getDetails(){
+    return {"userID" : this.getVideoConfig().userID, "email" : this.getVideoConfig().email, "session" : this.getVideoConfig().session, "video" : this.getVideoConfig().video}
   }
 
 }
