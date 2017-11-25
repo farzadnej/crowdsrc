@@ -29,22 +29,23 @@
     Should you have any questions regarding your rights as participants, please contact the Research Oversight and Compliance Office - Human Research Ethics Program at <a>ethics.review@utoronto.ca</a> or <a>416-946- 3273.</a><br><br>
 
     Please read the following, checkmark the appropriate box, and click the 'Next' button below.<br><br>
-
-    I <input id="nameInput" value="" type="text" placeholder="Please Specify">, have read this consent form and understand its contents. I understand that I am free to withdraw before or anytime during the study without penalty. <br><br>
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+    I <input ngModel required (keyup)="evaluateReady()" name="agree" id="nameInput" value="" type="text" placeholder="Please Specify">, have read this consent form and understand its contents. I understand that I am free to withdraw before or anytime during the study without penalty. <br><br>
 
 
     <div class="options text-center">
       <div class="agreement">
         <label for="agreement_chk1">
-          <input type="radio" name="agreement" value="yes"/> I voluntarily agree to participate in this study
+          <input required ngModel (change)="evaluateReady()" type="radio" id="guz" name="agreement" value="yes"> I voluntarily agree to participate in this study
         </label>
         <br>
         <label for="agreement_chk2">
-          <input type="radio" name="agreement" value="no"/> I DO NOT agree to participate in this study
+          <input ngModel (change)="evaluateReady()" type="radio" name="agreement" value="no"> I DO NOT agree to participate in this study
         </label>
       </div>
 
-      <button id="submitBtn" (click)="onSubmit()" class="top30 btn btn-primary btn-sm">Submit</button>
+      <button id="submitBtn" type="submit" class="top30 btn btn-primary btn-sm" [disabled]="!ready">Submit</button>
       <button id="nextBtn" class="hide"></button>
     </div>
+    </form>
   </div>

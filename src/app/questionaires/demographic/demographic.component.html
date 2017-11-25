@@ -4,6 +4,7 @@
   <h1 class="headline text-center">Demographic Questionnaire</h1>
 </header>
 
+<form (ngSubmit)="onSubmit()" #f="ngForm">
 <div class="body text-center">
   <div class="text-justify">
     <h3 id="selectAnswer" class="top0 bot20 text-center">Please answer all questions.</h3>
@@ -12,30 +13,33 @@
     <h5 class="top20">Before you begin, please provide some demographic information about yourself.</h5>
     <ol type="1">
       <li>What is your age? <br>
-        <input id="age" type="number" value="" placeholder="Please Specify"> <br>
+        <input required name="age" id="age" type="number" value="" placeholder="Please Specify" ngModel> <br>
       </li>
       <li>What is your gender? <br>
-        <input type="radio" name="gender" value="female"> Female <br>
-        <input type="radio" name="gender" value="male"> Male <br>
-        <input type="radio" name="gender" value="n/a"> Prefer not to answer <br>
+        <input required type="radio" name="gender" value="female" ngModel> Female <br>
+        <input type="radio" name="gender" value="male" ngModel> Male <br>
+        <input type="radio" name="gender" value="n/a" ngModel> Prefer not to answer <br>
       </li>
       <li>How would you rate your English proficiency? <br>
-        <input type="radio" name="english" value="native"> Native <br>
-        <input type="radio" name="english" value="fluent"> Fluent <br>
-        <input type="radio" name="english" value="conversational"> Conversational <br>
-        <input type="radio" name="english" value="limited"> Limited <br>
+        <input required type="radio" name="english" value="native" ngModel> Native <br>
+        <input type="radio" name="english" value="fluent" ngModel> Fluent <br>
+        <input type="radio" name="english" value="conversational" ngModel> Conversational <br>
+        <input type="radio" name="english" value="limited" ngModel> Limited <br>
       </li>
       <li>Which of the following best describes the highest level of education you have completed? <br>
-        <input type="radio" name="education" value="highschool"> Highschool equivalent <br>
-        <input type="radio" name="education" value="undergrad"> Some undergraduate/college <br>
-        <input type="radio" name="education" value="bachelors"> Bachelors degree <br>
-        <input type="radio" name="education" value="masters"> Masters degree <br>
-        <input type="radio" name="education" value="phd"> Doctoral degree <br>
-        <input type="radio" name="education" value="professional"> Professional degree (MD, JD, CA, etc) <br>
-        <input type="radio" name="education" value="other"> Other <br>
+        <input required type="radio" name="education" value="highschool" ngModel> Highschool equivalent <br>
+        <input type="radio" name="education" value="undergrad" ngModel> Some undergraduate/college <br>
+        <input type="radio" name="education" value="bachelors" ngModel> Bachelors degree <br>
+        <input type="radio" name="education" value="masters" ngModel> Masters degree <br>
+        <input type="radio" name="education" value="phd" ngModel> Doctoral degree <br>
+        <input type="radio" name="education" value="professional" ngModel> Professional degree (MD, JD, CA, etc) <br>
+        <input type="radio" name="education" value="other" ngModel> Other <br>
       </li>
     </ol>
   </div>
-  <button id="submitBtn" (click)="onSubmit()" class="top30 btn btn-primary btn-sm">Submit</button>
+  <button id="submitBtn" type="submit" [disabled]="!f.valid" class="top30 btn btn-primary btn-sm">Submit</button>
   <button id="nextBtn" class="hide"></button>
 </div>
+
+</form>
+

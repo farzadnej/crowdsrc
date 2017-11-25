@@ -14,18 +14,18 @@
 
     <ol type="1">
       <li>How would you rate the technical quality of the video you just watched?  <br>
-        <input type="radio" name="quality" value="5" ngModel> Excellent <br>
+        <input required type="radio" name="quality" value="5" ngModel> Excellent <br>
         <input type="radio" name="quality" value="4" ngModel> Good <br>
         <input type="radio" name="quality" value="3" ngModel> Fair <br>
         <input type="radio" name="quality" value="2" ngModel> Poor <br>
         <input type="radio" name="quality" value="1" ngModel> Bad <br>
       </li>
       <li>Would you consider the technical quality of the video to be acceptable?  <br>
-        <input type="radio" name="acceptibility" value="1" ngModel> Yes <br>
+        <input required type="radio" name="acceptibility" value="1" ngModel> Yes <br>
         <input type="radio" name="acceptibility" value="0" ngModel> No <br>
       </li>
       <li id="lastQuestion">Compared to the previous video, your viewing experience with this video is: <br>
-        <input type="radio" name="prev" value="2" ngModel> Much better <br>
+        <input required type="radio" name="prev" value="2" ngModel> Much better <br>
         <input type="radio" name="prev" value="1" ngModel> A little better <br>
         <input type="radio" name="prev" value="0" ngModel> The same <br>
         <input type="radio" name="prev" value="-1" ngModel> A little worse <br>

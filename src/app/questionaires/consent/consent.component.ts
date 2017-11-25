@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-consent',
@@ -7,6 +8,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./consent.component.css']
 })
 export class ConsentComponent implements OnInit {
+  @ViewChild('f') consentForm: NgForm;
+  ready = false;
 
   constructor(private router:Router) { }
 
@@ -15,6 +18,9 @@ export class ConsentComponent implements OnInit {
 
   onSubmit(){
     this.router.navigate(['/demographic']);
+  }
+  evaluateReady(){
+    this.ready = (this.consentForm.value.agreement === 'yes' && this.consentForm.value.agree !== '') ;
   }
 
 }
