@@ -2,16 +2,25 @@
   <form id="search-form" action="/results" class="style-scope ytd-searchbox">
     <div id="container" class="style-scope ytd-searchbox">
       <div id="search-input">
+        <table>
+        <tr>
+          <td class="col-large-9">
         <input id="search" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus=""
                                     name="search_query" tabindex="0" type="text" spellcheck="false" placeholder="Search"
                                     aria-label="Search" aria-haspopup="false" role="combobox" aria-autocomplete="list"
                                     dir="ltr" class="ytd-searchbox" style="outline: none;"
                                     [(ngModel)]="searchTerm"
-      ></div>
-      <div id="search-container" class=" "></div>
-      <button class="btn btn-primary" (click)="OnSearch()"> Search</button>
+      ></td>
+          <td class="col-large-1">
+            <button class="btn btn-primary" (click)="OnSearch()"> Search</button>
 
+      </td>
+
+        </tr>
+      </table>
+      </div>
     </div>
+
 
   </form>
 </div>

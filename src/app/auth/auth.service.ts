@@ -36,6 +36,7 @@ export class AuthService {
         (result: any) => {
           if (result.success){
             console.log(result);
+            this.firstSignIn(username, password);
             this.router.navigate(['/demographic']);
           }
 
@@ -138,6 +139,29 @@ export class AuthService {
   }
   getTime(){
     return this.time
+  }
+
+
+
+  firstSignIn(username, password) {
+    // this.httpClient.get<Recipe[]>('https://ng-recipe-book-3adbb.firebaseio.com/recipes.json?auth=' + token)
+    let postBody = {username: username, password: password};
+    this.httpClient.post<any>(this.signinUrl, postBody)
+      .subscribe(
+        (response: any) => {
+          if (response.token) {
+            this.token = response.token;
+            this.getConfigfromDatabase();
+            //this.backendService.updateBuffer({ip:response.ip});
+            this.ip = response.ip;
+            this.time = Date();
+          }
+          else {
+            this.token = null;
+          }
+          console.log(response);
+        }
+      );
   }
 
 

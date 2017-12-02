@@ -16,7 +16,7 @@ export class RateTrainingComponent implements OnInit {
   onSubmit(){
     let number = this.trainingService.getNumber();
     if (number === 3){
-      this.router.navigate(['/signin']);
+      this.router.navigate(['/youtube']);
     } else {
       this.router.navigate(['/training/player']);
     }
