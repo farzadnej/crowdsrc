@@ -1,6 +1,6 @@
 <!--<iframe width="560" height="315" [src]="source | safe" frameborder="0" allowfullscreen></iframe>-->
 
-
+<div class="containAll">
 <youtube-player id="youtubePlayer" [ngStyle]="{ 'filter': getBrightness()}"
                 [videoId]="id"
                 [width]="854"
@@ -16,3 +16,4 @@
 <p *ngIf="isI" class="top20">This is an example of a video that has freezing interruptions.</p>
 <p *ngIf="isR" class="top20">This is an example of a video that starts to play successfully, but fails before it is complete</p>
 <p *ngIf="isN" class="top20">This is an example of a video with no interruptions or failures.</p>
+</div>

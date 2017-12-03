@@ -20,6 +20,7 @@ export class PlayerComponent implements OnInit {
   impairment:any;
   videoState: string;
   networkFailed = false;
+  nextVisible = false;
 
   constructor(private route: ActivatedRoute, private router: Router,
               private backendService: BackendService, private authService: AuthService) { }
@@ -75,9 +76,9 @@ export class PlayerComponent implements OnInit {
     console.log('player instance', player);
 
     if (this.videoState === 'A') {
-        this.freeze();
+        this.accessibilityFreeze();
         this.showFailureMessage(10000);
-        this.navigate(20000);
+        this.showNext(20000);
     } else {
 
         let splitted = this.impairment.split(",");
@@ -106,7 +107,7 @@ export class PlayerComponent implements OnInit {
 
         }
       if (this.videoState === 'I') {
-          this.navigate(this.delay + videoDuration);
+          this.showNext(this.delay + videoDuration);
         console.log('del3',this.delay);
       }
       else if (this.videoState === 'R'){
@@ -117,7 +118,7 @@ export class PlayerComponent implements OnInit {
         console.log('del4',this.delay);
         console.log('chera', retainability, this.delay);
         this.showFailureMessage(retainability + this.delay + 15000);
-      this.navigate(retainability + this.delay + 25000);
+      this.showNext(retainability + this.delay + 25000);
         console.log('del5',this.delay);
 
     }
@@ -137,12 +138,16 @@ export class PlayerComponent implements OnInit {
     this.paused = true;
   }
 
+  accessibilityFreeze(){
+    this.player.pauseVideo();
+  }
+
   unfreeze(){
     this.player.playVideo();
     this.paused = false;
   }
 
-  navigate(when){
+  navigate(){
     let questions = this.backendService.getQuestions();
     let url = '';
     if (questions.videoQ === "Q300") {
@@ -157,10 +162,8 @@ export class PlayerComponent implements OnInit {
       url = '/youtube';
       this.backendService.setNextVideoConfig();
     }
+    this.router.navigate([url]);
 
-    setTimeout(()=>{
-      this.router.navigate([url]);
-    }, when);
   }
 
   showFailureMessage(when) {
@@ -179,6 +182,12 @@ export class PlayerComponent implements OnInit {
       return 'brightness(100%)'
     }
 
+  }
+  showNext(when){
+
+    setTimeout(()=>{
+      this.nextVisible = true;
+    }, when);
   }
 
 

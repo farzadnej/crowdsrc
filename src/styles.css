@@ -116,24 +116,13 @@ li textarea { margin: 6px 0; }
 
 video{ width: 500px; }
 
-.videoLayover{
-  text-align: center;
-  z-index: 1;
-  position: relative;
-}
+
 
 #videoBufferingImg{
   width: 40px;
   bottom: 165px;
 }
 
-#networkFailureMessage{
-  font-weight: 100;
-  font-size: 1.5em;
-  width: 100%;
-  color: white;
-  bottom: 205px;
-}
 
 .playBar{
   display: block;

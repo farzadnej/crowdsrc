@@ -1,12 +1,18 @@
+.containAll{
+  position: relative;
+}
+
 #pauseSpinner {
   background:url(http://www.broadwaybalancesamerica.com/images/ajax-loader.gif) center center no-repeat;
   backgroundColor:'transparent';
   border:     'none';
   width: 87px;
   height: 87px;
-  z-index: 200;
-  top: 390px;
-  left: 490px;
+  z-index: 2;
+  left:50%;
+  top: 50%;
+  margin-left: -44px;
+  margin-top: -44px;
   position: absolute;
 }
 

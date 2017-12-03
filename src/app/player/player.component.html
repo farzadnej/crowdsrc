@@ -1,13 +1,15 @@
 <!--<iframe width="560" height="315" [src]="source | safe" frameborder="0" allowfullscreen></iframe>-->
 
-
+<div class="containAll">
 <youtube-player id="youtubePlayer" [ngStyle]="{ 'filter': getBrightness()}"
   [videoId]="id"
-  [width]="854"
-  [height]="640"
+  [width]="1020"
+  [height]="600"
   (ready)="savePlayer($event)"
   (change)="onStateChange($event)"
 ></youtube-player>
 
 <div id="pauseSpinner" *ngIf="paused"></div>
 <p id="networkFailureMessage" *ngIf="networkFailed" class="videoLayover">Network Failure</p>
+  <div id="next" *ngIf="nextVisible"> <button id="nextBtn" class="top30 btn btn-primary btn-sm" (click)="navigate()">Next</button></div>
+</div>
