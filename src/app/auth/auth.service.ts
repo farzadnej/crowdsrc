@@ -11,8 +11,11 @@ export class AuthService {
   signinUrl = 'http://localhost:3000/api/signin';
   updateUrl = 'http://localhost:3000/api/update';
   configUrl = 'http://localhost:3000/api/config';
+  phaseUpdateUrl = 'http://localhost:3000/api/updatePhase';
+  getPhaseUrl = 'http://localhost:3000/api/getPhase';
   token: string;
   config: any;
+  phaseFromDatabase: number;
   ip = '';
   time= '';
 
@@ -91,10 +94,32 @@ export class AuthService {
           this.config = response.config;
         }
       );
+
+
+    this.httpClient.get<any>(this.getPhaseUrl, {
+      headers: new HttpHeaders().set('Authorization', this.token),
+    })
+      .subscribe(
+        (response: any) => {
+          console.log('phase',response);
+          if (response.phase != null){
+            this.phaseFromDatabase = +(response.phase);
+          } else{
+            this.phaseFromDatabase = 1;
+          }
+
+        }
+      );
+
+
   }
 
   getConfig(){
     return this.config
+  }
+
+  getPhase(){
+    return this.phaseFromDatabase
   }
 
 
@@ -159,6 +184,20 @@ export class AuthService {
           else {
             this.token = null;
           }
+          console.log(response);
+        }
+      );
+  }
+
+
+  updateDatabasePhase(phase) {
+    // this.httpClient.get<Recipe[]>('https://ng-recipe-book-3adbb.firebaseio.com/recipes.json?auth=' + token)
+    let postBody = {phase: String(phase)};
+    this.httpClient.post<any>(this.phaseUpdateUrl, postBody, {
+        headers: new HttpHeaders().set('Authorization', this.token),
+      })
+      .subscribe(
+        (response: any) => {
           console.log(response);
         }
       );

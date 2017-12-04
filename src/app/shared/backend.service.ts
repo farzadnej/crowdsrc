@@ -4,17 +4,20 @@ import {AuthService} from "../auth/auth.service";
 
 @Injectable()
 export class BackendService {
-  phase: number = 1;
+  phase: number = -1;
   //videoConfig = AppSettings.CONFIGURATION.find(x => x.number === String(this.phase));
   dataBuffer: any = {};
   date:any;
   dateInMs:any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {  }
 
   getVideoConfig(){
     let config: any = this.authService.getConfig();
     //let videoConfig = AppSettings.CONFIGURATION.find(x => x.number === String(this.phase));
+    if (this.phase === -1){
+      this.phase = this.authService.getPhase();
+    }
     let videoConfig = config.find(x => x.seqNo === String(this.phase));
     return videoConfig
   }
