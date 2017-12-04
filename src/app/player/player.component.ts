@@ -21,6 +21,8 @@ export class PlayerComponent implements OnInit {
   videoState: string;
   networkFailed = false;
   nextVisible = false;
+  nextTime = '';
+  submitTime = '';
 
   constructor(private route: ActivatedRoute, private router: Router,
               private backendService: BackendService, private authService: AuthService) { }
@@ -148,6 +150,9 @@ export class PlayerComponent implements OnInit {
   }
 
   navigate(){
+    this.submitTime = Date();
+    this.authService.updateRow({row: String(this.backendService.getPhase()),
+      nextTime: this.nextTime, submitTime: this.submitTime});
     let questions = this.backendService.getQuestions();
     let url = '';
     if (questions.videoQ === "Q300") {
@@ -187,6 +192,7 @@ export class PlayerComponent implements OnInit {
 
     setTimeout(()=>{
       this.nextVisible = true;
+      this.nextTime = Date();
     }, when);
   }
 

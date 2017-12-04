@@ -12,9 +12,8 @@ export class SessionEndComponent implements OnInit {
   constructor(private backendService: BackendService, private authService: AuthService) { }
 
   ngOnInit() {
-    console.log('3');
-    console.log(this.backendService.getPhase());
-    this.authService.updateDatabasePhase(this.backendService.getPhase()+1);
+
+    this.authService.updateDatabasePhase(this.backendService.getPhase());
 
 
 
