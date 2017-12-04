@@ -9,8 +9,8 @@
   width: 87px;
   height: 87px;
   z-index: 2;
-  left:50%;
-  top: 50%;
+  left:510px;
+  top: 300px;
   margin-left: -44px;
   margin-top: -44px;
   position: absolute;
@@ -25,9 +25,10 @@
 #networkFailureMessage{
   font-weight: 100;
   font-size: 1.5em;
-  width: 70%;
   color: white;
-  bottom: 305px;
+  left:480px;
+  top: 250px;
+  position: absolute;
 }
 
 #youtubePlayer{

@@ -60,7 +60,7 @@ export class TrainingPlayerComponent implements OnInit {
     let videoDuration = 1000 * (player.getDuration());
 
     if (this.videoState === 'A') {
-      this.freeze();
+      this.accessibilityFreeze();
       this.showFailureMessage(10000);
       this.navigate(20000);
     } else {
@@ -162,7 +162,10 @@ export class TrainingPlayerComponent implements OnInit {
     else{
       return 'brightness(100%)'
     }
+  }
 
+  accessibilityFreeze(){
+    this.player.pauseVideo();
   }
 
 
