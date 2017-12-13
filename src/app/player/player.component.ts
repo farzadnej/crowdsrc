@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {BackendService} from "../shared/backend.service";
 import {AuthService} from "../auth/auth.service";
+import {VisibilityService} from "../shared/visibility.service";
 
 @Component({
   selector: 'app-player',
@@ -25,7 +26,7 @@ export class PlayerComponent implements OnInit {
   submitTime = '';
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private backendService: BackendService, private authService: AuthService) { }
+              private backendService: BackendService, private authService: AuthService, private visibilityService:VisibilityService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -40,6 +41,7 @@ export class PlayerComponent implements OnInit {
     this.videoState = this.backendService.getVideoState();
     this.impairment = this.backendService.getImpairment();
     console.log("impair",this.impairment);
+    this.visibilityService.checkVisibility(document);
   }
 
 
@@ -152,7 +154,7 @@ export class PlayerComponent implements OnInit {
   navigate(){
     this.submitTime = Date();
     this.authService.updateRow({row: String(this.backendService.getPhase()),
-      nextTime: this.nextTime, submitTime: this.submitTime});
+      nextTime: this.nextTime, submitTime: this.submitTime, focusedUser: this.visibilityService.wasUserFocused()});
     let questions = this.backendService.getQuestions();
     let url = '';
     if (questions.videoQ === "Q300") {

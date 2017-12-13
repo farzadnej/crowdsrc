@@ -40,6 +40,8 @@ import { TrainingPlayerComponent } from './training/training-player/training-pla
 import {TrainingService} from "./training/training.service";
 import { RateTrainingComponent } from './training/rate-training/rate-training.component';
 import { Q301Component } from './questionaires/q301/q301.component';
+import {VisibilityService} from "./shared/visibility.service";
+import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
 
 
 
@@ -72,7 +74,8 @@ import { Q301Component } from './questionaires/q301/q301.component';
     SecondInstructionComponent,
     TrainingPlayerComponent,
     RateTrainingComponent,
-    Q301Component
+    Q301Component,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ import { Q301Component } from './questionaires/q301/q301.component';
     BackendService,
     AuthGuard,
     AuthService,
-    TrainingService
+    TrainingService,
+    VisibilityService
   ],
   bootstrap: [AppComponent]
 })

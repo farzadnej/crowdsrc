@@ -22,10 +22,12 @@ import {SecondInstructionComponent} from "./training/second-instruction/second-i
 import {TrainingPlayerComponent} from "./training/training-player/training-player.component"
 import {RateTrainingComponent} from "./training/rate-training/rate-training.component"
 import {Q301Component} from "./questionaires/q301/q301.component"
+import {PasswordResetComponent} from "./auth/password-reset/password-reset.component"
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent},
   { path: 'signin', component: SigninComponent},
+  { path: 'password-reset', component: PasswordResetComponent},
   { path: 'player/:id', component: PlayerComponent, canActivate: [AuthGuard] },
   { path: 'consent', component: ConsentComponent },
   { path: 'block-questionaire', component: BlockComponent, canActivate: [AuthGuard] },
