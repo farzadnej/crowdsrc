@@ -42,6 +42,9 @@ import { RateTrainingComponent } from './training/rate-training/rate-training.co
 import { Q301Component } from './questionaires/q301/q301.component';
 import {VisibilityService} from "./shared/visibility.service";
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
+import { PasswordUpdateComponent } from './auth/password-update/password-update.component';
+import { PassUpdateSuccessComponent } from './auth/pass-update-success/pass-update-success.component';
+import { PassResetMessageComponent } from './auth/pass-reset-message/pass-reset-message.component';
 
 
 
@@ -75,7 +78,10 @@ import { PasswordResetComponent } from './auth/password-reset/password-reset.com
     TrainingPlayerComponent,
     RateTrainingComponent,
     Q301Component,
-    PasswordResetComponent
+    PasswordResetComponent,
+    PasswordUpdateComponent,
+    PassUpdateSuccessComponent,
+    PassResetMessageComponent
   ],
   imports: [
     BrowserModule,

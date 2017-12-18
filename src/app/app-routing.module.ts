@@ -23,11 +23,17 @@ import {TrainingPlayerComponent} from "./training/training-player/training-playe
 import {RateTrainingComponent} from "./training/rate-training/rate-training.component"
 import {Q301Component} from "./questionaires/q301/q301.component"
 import {PasswordResetComponent} from "./auth/password-reset/password-reset.component"
+import {PasswordUpdateComponent} from "./auth/password-update/password-update.component"
+import {PassUpdateSuccessComponent} from "./auth/pass-update-success/pass-update-success.component"
+import {PassResetMessageComponent} from "./auth/pass-reset-message/pass-reset-message.component"
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent},
   { path: 'signin', component: SigninComponent},
   { path: 'password-reset', component: PasswordResetComponent},
+  { path: 'pass-reset-message', component: PassResetMessageComponent},
+  { path: 'password-update/:id', component: PasswordUpdateComponent},
+  { path: 'pass-update-success', component: PassUpdateSuccessComponent},
   { path: 'player/:id', component: PlayerComponent, canActivate: [AuthGuard] },
   { path: 'consent', component: ConsentComponent },
   { path: 'block-questionaire', component: BlockComponent, canActivate: [AuthGuard] },

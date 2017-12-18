@@ -9,6 +9,8 @@ import {BackendService} from "../shared/backend.service";
 export class AuthService {
   signupUrl = 'http://localhost:3000/api/signup';
   signinUrl = 'http://localhost:3000/api/signin';
+  passUpdateUrl = 'http://localhost:3000/api/updatepass';
+  resetPassUrl = 'http://localhost:3000/api/resetpass';
   updateUrl = 'http://localhost:3000/api/update';
   configUrl = 'http://localhost:3000/api/config';
   phaseUpdateUrl = 'http://localhost:3000/api/updatePhase';
@@ -41,6 +43,37 @@ export class AuthService {
             console.log(result);
             this.firstSignIn(username, password);
             this.router.navigate(['/demographic']);
+          }
+
+        }
+      );
+  }
+
+  updatePass(username, password, randID) {
+    // this.httpClient.get<Recipe[]>('https://ng-recipe-book-3adbb.firebaseio.com/recipes.json?auth=' + token)
+    let postBody = {username: username, password: password, randID: randID};
+    this.httpClient.post<any>(this.passUpdateUrl, postBody)
+      .subscribe(
+        (result: any) => {
+          if (result.success){
+            console.log(result);
+            this.router.navigate(['/pass-update-success']);
+          }
+
+        }
+      );
+  }
+
+
+  resetPass(username) {
+    // this.httpClient.get<Recipe[]>('https://ng-recipe-book-3adbb.firebaseio.com/recipes.json?auth=' + token)
+    let postBody = {username: username};
+    this.httpClient.post<any>(this.resetPassUrl, postBody)
+      .subscribe(
+        (result: any) => {
+          if (result.success){
+            console.log(result);
+            this.router.navigate(['/pass-reset-message']);
           }
 
         }

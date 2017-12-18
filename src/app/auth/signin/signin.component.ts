@@ -34,4 +34,8 @@ export class SigninComponent implements OnInit {
     this.authService.updateRow({row:'1', vidQuestionaire: 'from Button'});
     //this.router.navigate(['/demographic']);
   }
+
+  resetPass(){
+    this.router.navigate(['/password-reset']);
+  }
 }
