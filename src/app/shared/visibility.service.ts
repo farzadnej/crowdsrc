@@ -19,10 +19,12 @@ export class VisibilityService {
 
       // If the document is hidden we want to pause the video.
       if (document[hidden]) {
+        console.log('user not paying attention');
         this.focusedUser = false;
 
         }
-    });
+    }.bind(this));
+    console.log('bala', this.focusedUser);
   }
 
   getPrefix() {
@@ -70,9 +72,12 @@ export class VisibilityService {
     }
   }
   wasUserFocused(){
+    console.log(this.focusedUser);
     if (this.focusedUser){
+      console.log('yes');
       return 'yes'
     }
+    console.log('no');
     return 'no'
   }
 

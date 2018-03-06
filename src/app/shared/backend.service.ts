@@ -9,6 +9,11 @@ export class BackendService {
   dataBuffer: any = {};
   date:any;
   dateInMs:any;
+  whatToLoad: String;
+  whereToNavaigate: String;
+  current = '';
+  nextUrl: String;
+
 
   constructor(private authService: AuthService) {  }
 
@@ -114,6 +119,86 @@ export class BackendService {
   }
   getQuestions(){
     return {"videoQ" : this.getVideoConfig().videoQuestionaire, "blockQ" : this.getVideoConfig().blockQuestionaire, "sessionQ" : this.getVideoConfig().sessionQuestionaire}
+  }
+
+  getCurrentAndNextUrl(){
+    if (this.getVideoConfig().videoQuestionaire && this.current === ''){
+      this.current = "videoQ";
+      return [this.current,'/video-questionaire']
+    } else if (this.getVideoConfig().blockQuestionaire && this.current === '') {
+      this.current = "blockQ";
+      return [this.current,'/block-questionaire']
+    } else if (this.getVideoConfig().sessionQuestionaire && this.current === '') {
+      this.current = "sessionQ";
+      return [this.current,'/session-questionaire']
+    } else if ( this.current === 'videoQ' && this.getVideoConfig().blockQuestionaire) {
+      this.current = "blockQ";
+      return [this.current,'/block-questionaire']
+    } else if ( this.current === 'videoQ' && this.getVideoConfig().sessionQuestionaire) {
+      this.current = "sessionQ";
+      return [this.current,'/session-questionaire']
+    } else if ( this.current === 'blockQ' && this.getVideoConfig().sessionQuestionaire) {
+      this.current = "sessionQ";
+      return [this.current,'/session-questionaire']
+    } else if ( this.current === 'sessionQ') {
+      this.current = "";
+      return [this.current,'/session-end']
+    } else {
+      this.current = "";
+      return [this.current,'/youtube']
+    }
+
+
+  }
+
+
+
+  getCurrentAndNextUrlLL(){
+    if (this.getVideoConfig().videoQuestionaire && this.current === ''){
+      this.current = "videoQ";
+      if (this.getVideoConfig().blockQuestionaure){
+        this.nextUrl = '/block-questionaire';
+      } else if (this.getVideoConfig().sessionQuestionaure){
+        this.nextUrl = '/session-questionaire';
+      } else{
+        this.nextUrl = '/youtube';
+      }
+      return [this.current, this.nextUrl]
+    } else if (this.getVideoConfig().blockQuestionaire && this.current === '') {
+      this.current = "blockQ";
+      if (this.getVideoConfig().sessionQuestionaure){
+        this.nextUrl = '/session-questionaire';
+      } else{
+        this.nextUrl = '/session-end';
+      }
+      return [this.current, this.nextUrl]
+    } else if (this.getVideoConfig().sessionQuestionaire && this.current === '') {
+      this.current = "sessionQ";
+      this.nextUrl = '/session-end';
+      return [this.current, this.nextUrl]
+    } else if ( this.current === 'videoQ' && this.getVideoConfig().blockQuestionaire) {
+
+      this.current = "blockQ";
+      if (this.getVideoConfig().sessionQuestionaure){
+        this.nextUrl = '/session-questionaire';
+      } else{
+        this.nextUrl = '/youtube';
+      }
+      return [this.current,this.nextUrl]
+    } else if ( this.current === 'videoQ' && this.getVideoConfig().sessionQuestionaire) {
+      this.current = "sessionQ";
+      this.nextUrl = '/session-end';
+      return [this.current, this.nextUrl]
+    } else if ( this.current === 'blockQ' && this.getVideoConfig().sessionQuestionaire) {
+      this.current = "sessionQ";
+      this.nextUrl = '/session-end';
+      return [this.current, this.nextUrl]
+    } else {
+      this.current = "";
+      return [this.current,'/youtube']
+    }
+
+
   }
 
   updateBuffer(newData){

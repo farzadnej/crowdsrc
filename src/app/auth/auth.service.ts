@@ -15,11 +15,13 @@ export class AuthService {
   configUrl = 'http://localhost:3000/api/config';
   phaseUpdateUrl = 'http://localhost:3000/api/updatePhase';
   getPhaseUrl = 'http://localhost:3000/api/getPhase';
+  qustionaireUrl = 'http://localhost:3000/api/questionaire';
   token: string;
   config: any;
   phaseFromDatabase: number;
   ip = '';
   time= '';
+  questionaires: any;
 
   paramsObj = new HttpParams();
 
@@ -111,7 +113,7 @@ export class AuthService {
   }
 
 
-  getConfigfromDatabase(){
+  getConfigfromDatabase() {
     this.httpClient.get<any>(this.configUrl, {
       headers: new HttpHeaders().set('Authorization', this.token),
     })
@@ -234,6 +236,25 @@ export class AuthService {
           console.log(response);
         }
       );
+  }
+
+  getQuestionairesFromDatabase(qType) {
+
+    let paramsObj = new HttpParams().append('qType', qType);
+     return this.httpClient.get<any>(this.qustionaireUrl, {
+      observe: 'body',
+      responseType: 'json',
+      headers: new HttpHeaders().set('Authorization', this.token),
+      params: paramsObj
+    })
+      .map(
+        (response) => {
+          return response
+
+        }
+      );
+
+
   }
 
 

@@ -45,6 +45,7 @@ import { PasswordResetComponent } from './auth/password-reset/password-reset.com
 import { PasswordUpdateComponent } from './auth/password-update/password-update.component';
 import { PassUpdateSuccessComponent } from './auth/pass-update-success/pass-update-success.component';
 import { PassResetMessageComponent } from './auth/pass-reset-message/pass-reset-message.component';
+import { GenericQuestionaireComponent } from './questionaires/generic-questionaire/generic-questionaire.component';
 
 
 
@@ -81,7 +82,8 @@ import { PassResetMessageComponent } from './auth/pass-reset-message/pass-reset-
     PasswordResetComponent,
     PasswordUpdateComponent,
     PassUpdateSuccessComponent,
-    PassResetMessageComponent
+    PassResetMessageComponent,
+    GenericQuestionaireComponent
   ],
   imports: [
     BrowserModule,

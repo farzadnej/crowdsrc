@@ -157,13 +157,11 @@ export class PlayerComponent implements OnInit {
       nextTime: this.nextTime, submitTime: this.submitTime, focusedUser: this.visibilityService.wasUserFocused()});
     let questions = this.backendService.getQuestions();
     let url = '';
-    if (questions.videoQ === "Q300") {
+    if (questions.videoQ) {
       url = '/video-questionaire';
-    } else if (questions.videoQ === 'Q301') {
-      url = '/q301';
-    } else if (questions.blockQ === 'Q200') {
+    } else if (questions.blockQ ) {
       url = '/block-questionaire';
-    } else if (questions.sessionQ === "Q100") {
+    } else if (questions.sessionQ) {
       url = '/session-questionaire';
     } else {
       url = '/youtube';

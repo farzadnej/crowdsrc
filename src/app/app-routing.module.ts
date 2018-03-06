@@ -26,6 +26,7 @@ import {PasswordResetComponent} from "./auth/password-reset/password-reset.compo
 import {PasswordUpdateComponent} from "./auth/password-update/password-update.component"
 import {PassUpdateSuccessComponent} from "./auth/pass-update-success/pass-update-success.component"
 import {PassResetMessageComponent} from "./auth/pass-reset-message/pass-reset-message.component"
+import {GenericQuestionaireComponent} from "./questionaires/generic-questionaire/generic-questionaire.component"
 const appRoutes: Routes = [
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent},
@@ -36,10 +37,11 @@ const appRoutes: Routes = [
   { path: 'pass-update-success', component: PassUpdateSuccessComponent},
   { path: 'player/:id', component: PlayerComponent, canActivate: [AuthGuard] },
   { path: 'consent', component: ConsentComponent },
-  { path: 'block-questionaire', component: BlockComponent, canActivate: [AuthGuard] },
-  { path: 'video-questionaire', component: VideoQuestionaireComponent, canActivate:[AuthGuard]},
+  { path: 'generic-questionaire', component: GenericQuestionaireComponent },
+  { path: 'block-questionaire', component: GenericQuestionaireComponent, canActivate: [AuthGuard] },
+  { path: 'video-questionaire', component: GenericQuestionaireComponent, canActivate:[AuthGuard]},
   { path: 'q301', component: Q301Component, canActivate:[AuthGuard]},
-  { path: 'session-questionaire', component: SessionQuestionaireComponent, canActivate:[AuthGuard]},
+  { path: 'session-questionaire', component: GenericQuestionaireComponent, canActivate:[AuthGuard]},
   { path: 'session-end', component: SessionEndComponent, canActivate:[AuthGuard]},
   { path: 'demographic', component: DemographicComponent},
   { path: 'youtube', component: YoutubeComponent, canActivate: [AuthGuard] , children: [
