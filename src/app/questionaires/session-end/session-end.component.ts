@@ -13,7 +13,7 @@ export class SessionEndComponent implements OnInit {
 
   ngOnInit() {
 
-    this.authService.updateDatabasePhase(this.backendService.getPhase());
+    this.authService.updateDatabasePhase(this.backendService.getPhase(), Date());
 
 
 

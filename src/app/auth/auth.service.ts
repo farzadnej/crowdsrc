@@ -225,9 +225,9 @@ export class AuthService {
   }
 
 
-  updateDatabasePhase(phase) {
+  updateDatabasePhase(phase, sessionTime) {
     // this.httpClient.get<Recipe[]>('https://ng-recipe-book-3adbb.firebaseio.com/recipes.json?auth=' + token)
-    let postBody = {phase: String(phase)};
+    let postBody = {phase: String(phase), sessionTime: sessionTime};
     this.httpClient.post<any>(this.phaseUpdateUrl, postBody, {
         headers: new HttpHeaders().set('Authorization', this.token),
       })
