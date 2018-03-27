@@ -7,15 +7,15 @@ import {BackendService} from "../shared/backend.service";
 
 @Injectable()
 export class AuthService {
-  signupUrl = 'http://localhost:3000/api/signup';
-  signinUrl = 'http://localhost:3000/api/signin';
-  passUpdateUrl = 'http://localhost:3000/api/updatepass';
-  resetPassUrl = 'http://localhost:3000/api/resetpass';
-  updateUrl = 'http://localhost:3000/api/update';
-  configUrl = 'http://localhost:3000/api/config';
-  phaseUpdateUrl = 'http://localhost:3000/api/updatePhase';
-  getPhaseUrl = 'http://localhost:3000/api/getPhase';
-  qustionaireUrl = 'http://localhost:3000/api/questionaire';
+  signupUrl = '/api/signup';
+  signinUrl = '/api/signin';
+  passUpdateUrl = '/api/updatepass';
+  resetPassUrl = '/api/resetpass';
+  updateUrl = '/api/update';
+  configUrl = '/api/config';
+  phaseUpdateUrl = '/api/updatePhase';
+  getPhaseUrl = '/api/getPhase';
+  qustionaireUrl = '/api/questionaire';
   token: string;
   config: any;
   phaseFromDatabase: number;

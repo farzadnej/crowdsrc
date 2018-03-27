@@ -28,7 +28,7 @@ import {PassUpdateSuccessComponent} from "./auth/pass-update-success/pass-update
 import {PassResetMessageComponent} from "./auth/pass-reset-message/pass-reset-message.component"
 import {GenericQuestionaireComponent} from "./questionaires/generic-questionaire/generic-questionaire.component"
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/youtube', pathMatch: 'full' },
+  { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent},
   { path: 'signin', component: SigninComponent},
   { path: 'password-reset', component: PasswordResetComponent},
@@ -49,11 +49,6 @@ const appRoutes: Routes = [
     { path: 'new', component: YoutubeComponent },
     { path: ':id', component: YoutubeComponent },
     { path: ':id/edit', component: YoutubeComponent },
-  ] },
-
-  { path: 'admin', component: AdminComponent ,canActivate: [AuthGuard], children: [
-    { path: 'config', component: ConfigComponent },
-    { path: 'stats', component: StatsComponent },
   ] },
 
   { path: 'training', component: TrainingComponent , children: [
