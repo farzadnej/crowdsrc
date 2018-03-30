@@ -38,4 +38,8 @@
   font-weight: bold;
 }
 
+.disablePointer {
+  pointer-events: none;
+}
+
 

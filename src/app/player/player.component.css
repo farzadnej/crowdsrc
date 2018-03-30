@@ -33,3 +33,7 @@
 #nextBtn{
   text-align: right;
 }
+
+.disablePointer {
+  pointer-events: none;
+}

@@ -31,7 +31,7 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) =>{
-        this.id = params['id'] + '?enablejsapi=1&rel=0&controls=0&showinfo=0';
+        this.id = params['id'] + '?enablejsapi=1&rel=0&controls=0&showinfo=0&autoplay=0';
         this.source = this.EMBEDURL + params['id'] + '?enablejsapi=1&rel=0';
         console.log(this.source);
       }
@@ -47,13 +47,19 @@ export class PlayerComponent implements OnInit {
 
 
   savePlayer (player) {
-    console.log('del0',this.delay);
     this.player = player;
-    //this.player.setOption({
+    /* this.player.setOption({
+     playerVars: {
+       'autoplay': 0,
+         'controls': 0,
+         'rel' : 0,
+         'fs' : 0,
+     }
+     });*/
     //  height: '390',
     //  width: '640',
     //  videoId: 'M7lc1UVf-VE'
-    // });
+
     //for logging purposes
 
     this.authService.updateRow({row: String(this.backendService.getPhase()), videoUrl: String (this.player.getVideoUrl()), videoDuration: String (this.player.getDuration())});
@@ -79,7 +85,10 @@ export class PlayerComponent implements OnInit {
     console.log('vid dur', videoDuration);
     console.log('player instance', player);
 
-    if (this.videoState === 'A') {
+    if (this.videoState === 'OK'){
+      this.showNext(videoDuration);
+      console.log('videoDuration OK', videoDuration);
+    } else if (this.videoState === 'A') {
         this.accessibilityFreeze();
         this.showFailureMessage(10000);
         this.showNext(20000);
@@ -126,7 +135,6 @@ export class PlayerComponent implements OnInit {
         console.log('del5',this.delay);
 
     }
-
     }
 
 
