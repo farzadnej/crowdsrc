@@ -22,6 +22,9 @@ export class AuthService {
   ip = '';
   time= '';
   questionaires: any;
+  signinError = '';
+  passResetError = '';
+  signupError = '';
 
   paramsObj = new HttpParams();
 
@@ -44,7 +47,10 @@ export class AuthService {
           if (result.success){
             console.log(result);
             this.firstSignIn(username, password);
+            this.signupError = '';
             this.router.navigate(['/demographic']);
+          } else if (!result.success){
+            this.signupError = result.msg;
           }
 
         }
@@ -75,8 +81,12 @@ export class AuthService {
         (result: any) => {
           if (result.success){
             console.log(result);
+            this.passResetError = '';
             this.router.navigate(['/pass-reset-message']);
+          } else if (!result.success){
+           this.passResetError = result.msg;
           }
+
 
         }
       );
@@ -89,17 +99,23 @@ export class AuthService {
       .subscribe(
         (response: any) => {
           if (response.token) {
+            this.signinError = '';
             this.token = response.token;
             this.getConfigfromDatabase();
             //this.backendService.updateBuffer({ip:response.ip});
             this.ip = response.ip;
             this.time = Date();
             this.router.navigate(['/youtube']);
+            console.log(response, this.signinError, 'if');
           }
           else {
             this.token = null;
           }
           console.log(response);
+        },
+        (err: any) => {
+          this.signinError = err.error.msg;
+          console.log(err.error);
         }
       );
   }

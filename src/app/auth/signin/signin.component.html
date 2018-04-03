@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div> <h3>Please Sign In</h3> </div>
       <form (ngSubmit)="onSignin()" #f="ngForm">
         <div
           id="user-data"
@@ -30,6 +31,7 @@
               password
             >
             <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
+            <span [ngStyle]="{'color':'red', 'font-weight':'bold'}" *ngIf="authService.signinError !== ''">{{authService.signinError}} </span>
           </div>
         </div>
         <p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>

@@ -10,16 +10,20 @@ import {Router} from "@angular/router";
 })
 export class SigninComponent implements OnInit {
   @ViewChild('f') signinForm: NgForm;
+  //signinError = 'j';
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+
   }
 
   onSignin(){
 
     console.log(this.signinForm.value.userData.email);
     this.authService.signin(this.signinForm.value.userData.email, this.signinForm.value.userData.password);
+    //this.signinError = this.authService.signinError;
+    //console.log(this.signinError);
 
   }
 
