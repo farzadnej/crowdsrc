@@ -85,7 +85,7 @@ export class PlayerComponent implements OnInit {
     console.log('vid dur', videoDuration);
     console.log('player instance', player);
 
-    if (this.videoState === 'OK'){
+    if (this.videoState === 'N'){
       this.showNext(videoDuration);
       console.log('videoDuration OK', videoDuration);
     } else if (this.videoState === 'A') {
