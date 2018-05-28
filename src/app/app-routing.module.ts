@@ -27,6 +27,8 @@ import {PasswordUpdateComponent} from "./auth/password-update/password-update.co
 import {PassUpdateSuccessComponent} from "./auth/pass-update-success/pass-update-success.component"
 import {PassResetMessageComponent} from "./auth/pass-reset-message/pass-reset-message.component"
 import {GenericQuestionaireComponent} from "./questionaires/generic-questionaire/generic-questionaire.component"
+import {StartQuestionaireComponent} from "./questionaires/start-questionaire/start-questionaire.component"
+
 const appRoutes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent},
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'pass-update-success', component: PassUpdateSuccessComponent},
   { path: 'player/:id', component: PlayerComponent, canActivate: [AuthGuard] },
   { path: 'consent', component: ConsentComponent },
-  { path: 'generic-questionaire', component: GenericQuestionaireComponent },
+  { path: 'generic-questionaire', component: GenericQuestionaireComponent, canActivate: [AuthGuard] },
+  { path: 'start-questionaire', component: StartQuestionaireComponent },
   { path: 'block-questionaire', component: GenericQuestionaireComponent, canActivate: [AuthGuard] },
   { path: 'video-questionaire', component: GenericQuestionaireComponent, canActivate:[AuthGuard]},
   { path: 'q301', component: Q301Component, canActivate:[AuthGuard]},

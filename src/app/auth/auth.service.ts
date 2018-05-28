@@ -105,7 +105,16 @@ export class AuthService {
             //this.backendService.updateBuffer({ip:response.ip});
             this.ip = response.ip;
             this.time = Date();
-            this.router.navigate(['/youtube']);
+            this.determineRoute().subscribe(
+              (response:any) => {
+                if (response.startSessionQuestionaire === ''){
+                  this.router.navigate(['/youtube']);
+                } else {
+                  this.router.navigate([ '/start-questionaire']);
+                }
+
+              }
+            );
             console.log(response, this.signinError, 'if');
           }
           else {
@@ -270,6 +279,13 @@ export class AuthService {
         }
       );
 
+
+  }
+
+  determineRoute(){
+    return this.httpClient.get<any>(this.configUrl, {
+      headers: new HttpHeaders().set('Authorization', this.token),
+    })
 
   }
 

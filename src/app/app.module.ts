@@ -46,6 +46,7 @@ import { PasswordUpdateComponent } from './auth/password-update/password-update.
 import { PassUpdateSuccessComponent } from './auth/pass-update-success/pass-update-success.component';
 import { PassResetMessageComponent } from './auth/pass-reset-message/pass-reset-message.component';
 import { GenericQuestionaireComponent } from './questionaires/generic-questionaire/generic-questionaire.component';
+import { StartQuestionaireComponent } from './questionaires/start-questionaire/start-questionaire.component';
 
 
 
@@ -83,7 +84,8 @@ import { GenericQuestionaireComponent } from './questionaires/generic-questionai
     PasswordUpdateComponent,
     PassUpdateSuccessComponent,
     PassResetMessageComponent,
-    GenericQuestionaireComponent
+    GenericQuestionaireComponent,
+    StartQuestionaireComponent
   ],
   imports: [
     BrowserModule,

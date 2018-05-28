@@ -17,11 +17,11 @@
         <li *ngFor = "let question of questions">{{ question.question }}  <br>
           <textarea required type="text" name= "{{question.qNumber}}" class="q-textarea" ngModel *ngIf="question.textarea; else radioBlock"> </textarea> <br *ngIf="question.textarea">
           <ng-template #radioBlock>
-          <input required type="radio" name= "{{question.qNumber}}" value="1" ngModel *ngIf="question.a"> {{ question.a }} <br>
-          <input type="radio" name= "{{question.qNumber}}" value="2" ngModel *ngIf="question.b"> {{ question.b }} <br *ngIf="question.b">
-          <input type="radio" name= "{{question.qNumber}}" value="3" ngModel *ngIf="question.c"> {{ question.c }} <br *ngIf="question.c">
-          <input type="radio" name= "{{question.qNumber}}" value="4" ngModel *ngIf="question.d"> {{ question.d }} <br *ngIf="question.d">
-          <input type="radio" name= "{{question.qNumber}}" value="5" ngModel *ngIf="question.e"> {{ question.e }} <br *ngIf="question.e">
+            <input required type="radio" name= "{{question.qNumber}}" value="1" ngModel *ngIf="question.a"> {{ question.a }} <br>
+            <input type="radio" name= "{{question.qNumber}}" value="2" ngModel *ngIf="question.b"> {{ question.b }} <br *ngIf="question.b">
+            <input type="radio" name= "{{question.qNumber}}" value="3" ngModel *ngIf="question.c"> {{ question.c }} <br *ngIf="question.c">
+            <input type="radio" name= "{{question.qNumber}}" value="4" ngModel *ngIf="question.d"> {{ question.d }} <br *ngIf="question.d">
+            <input type="radio" name= "{{question.qNumber}}" value="5" ngModel *ngIf="question.e"> {{ question.e }} <br *ngIf="question.e">
           </ng-template>
         </li>
       </ol>

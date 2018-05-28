@@ -121,6 +121,11 @@ export class BackendService {
     return {"videoQ" : this.getVideoConfig().videoQuestionaire, "blockQ" : this.getVideoConfig().blockQuestionaire, "sessionQ" : this.getVideoConfig().sessionQuestionaire}
   }
 
+  getstartQ(){
+    return {"startQ" : this.getVideoConfig().startSessionQuestionaire}
+  }
+
+
   getCurrentAndNextUrl(){
     if (this.getVideoConfig().videoQuestionaire && this.current === ''){
       this.current = "videoQ";
