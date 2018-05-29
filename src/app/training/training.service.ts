@@ -7,21 +7,21 @@ export class TrainingService {
   trainingConf = [
     {
       "number":"0",
-      "id": "U_6BRY50Zmc",
+      "id": "8majjGwwDZY",
       "videoState":"R",
       "retainability": "40",
       "impairment": ""
     },
     {
       "number":"1",
-      "id": "sV2t3tW_JTQ",
+      "id": "I2lQ_gFO3I0",
       "videoState":"A",
       "retainability": "",
       "impairment": ""
     },
     {
       "number":"2",
-      "id": "q3oiWDkjzOw",
+      "id": "09blOf3HEGw",
       "videoState":"I",
       "retainability": "",
       "impairment": "3,5,15,2,20,7"

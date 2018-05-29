@@ -121,11 +121,6 @@ export class BackendService {
     return {"videoQ" : this.getVideoConfig().videoQuestionaire, "blockQ" : this.getVideoConfig().blockQuestionaire, "sessionQ" : this.getVideoConfig().sessionQuestionaire}
   }
 
-  getstartQ(){
-    return {"startQ" : this.getVideoConfig().startSessionQuestionaire}
-  }
-
-
   getCurrentAndNextUrl(){
     if (this.getVideoConfig().videoQuestionaire && this.current === ''){
       this.current = "videoQ";
@@ -157,54 +152,6 @@ export class BackendService {
   }
 
 
-
-  getCurrentAndNextUrlLL(){
-    if (this.getVideoConfig().videoQuestionaire && this.current === ''){
-      this.current = "videoQ";
-      if (this.getVideoConfig().blockQuestionaure){
-        this.nextUrl = '/block-questionaire';
-      } else if (this.getVideoConfig().sessionQuestionaure){
-        this.nextUrl = '/session-questionaire';
-      } else{
-        this.nextUrl = '/youtube';
-      }
-      return [this.current, this.nextUrl]
-    } else if (this.getVideoConfig().blockQuestionaire && this.current === '') {
-      this.current = "blockQ";
-      if (this.getVideoConfig().sessionQuestionaure){
-        this.nextUrl = '/session-questionaire';
-      } else{
-        this.nextUrl = '/session-end';
-      }
-      return [this.current, this.nextUrl]
-    } else if (this.getVideoConfig().sessionQuestionaire && this.current === '') {
-      this.current = "sessionQ";
-      this.nextUrl = '/session-end';
-      return [this.current, this.nextUrl]
-    } else if ( this.current === 'videoQ' && this.getVideoConfig().blockQuestionaire) {
-
-      this.current = "blockQ";
-      if (this.getVideoConfig().sessionQuestionaure){
-        this.nextUrl = '/session-questionaire';
-      } else{
-        this.nextUrl = '/youtube';
-      }
-      return [this.current,this.nextUrl]
-    } else if ( this.current === 'videoQ' && this.getVideoConfig().sessionQuestionaire) {
-      this.current = "sessionQ";
-      this.nextUrl = '/session-end';
-      return [this.current, this.nextUrl]
-    } else if ( this.current === 'blockQ' && this.getVideoConfig().sessionQuestionaire) {
-      this.current = "sessionQ";
-      this.nextUrl = '/session-end';
-      return [this.current, this.nextUrl]
-    } else {
-      this.current = "";
-      return [this.current,'/youtube']
-    }
-
-
-  }
 
   updateBuffer(newData){
     this.dataBuffer = { ...this.dataBuffer, ...newData };

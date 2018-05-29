@@ -25,6 +25,9 @@ export class StartQuestionaireComponent implements OnInit {
 
   ngOnInit() {
     this.qType = this.backendService.getVideoConfig().startSessionQuestionaire;
+    if (this.qType === ''){
+      this.router.navigate(['/youtube']);
+    }
     this.authService.getQuestionairesFromDatabase(this.qType).subscribe(
       (response: any) => {
         this.questions = response.questionaires.sort(function(a, b){
