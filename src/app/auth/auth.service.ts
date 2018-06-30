@@ -16,6 +16,7 @@ export class AuthService {
   phaseUpdateUrl = '/api/updatePhase';
   getPhaseUrl = '/api/getPhase';
   qustionaireUrl = '/api/questionaire';
+  sendSessionEmailUrl = '/api/sendSessionEmail';
   token: string;
   config: any;
   phaseFromDatabase: number;
@@ -253,9 +254,16 @@ export class AuthService {
   updateDatabasePhase(phase, sessionTime) {
     // this.httpClient.get<Recipe[]>('https://ng-recipe-book-3adbb.firebaseio.com/recipes.json?auth=' + token)
     let postBody = {phase: String(phase), sessionTime: sessionTime};
-    this.httpClient.post<any>(this.phaseUpdateUrl, postBody, {
+    return this.httpClient.post<any>(this.phaseUpdateUrl, postBody, {
         headers: new HttpHeaders().set('Authorization', this.token),
-      })
+      });
+  }
+
+  sendSessionEmail() {
+    let postBody = {};
+    this.httpClient.post<any>(this.sendSessionEmailUrl, postBody, {
+      headers: new HttpHeaders().set('Authorization', this.token),
+    })
       .subscribe(
         (response: any) => {
           console.log(response);
