@@ -1,5 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
+    <p [ngStyle]="{'color':'blue', 'font-weight':'bold', 'text-indent': '2em'}" *ngIf="justLoaded">    Please Search for a Video.</p>
+    <p [ngStyle]="{'color':'red', 'font-weight':'bold', 'text-indent': '2em'}" *ngIf="notFound">    No Matching Results Found! Please Search for a Different Video.</p>
     <app-youtube-item
       *ngFor="let resultEl of results; let i = index"
       [result]="resultEl"

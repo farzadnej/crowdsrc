@@ -24,11 +24,12 @@ export class GenericQuestionaireComponent implements OnInit {
   constructor(private httpClient: HttpClient, private router: Router, private authService: AuthService, private backendService: BackendService) { }
 
   ngOnInit() {
-    this.currentUrl = this.backendService.getCurrentAndNextUrl()[0];
-    this.nextUrl = this.backendService.getCurrentAndNextUrl()[1];
+    [this.currentUrl, this.nextUrl] = this.backendService.getCurrentAndNextUrl();
+    //this.nextUrl = this.backendService.getCurrentAndNextUrl()[1];
+    console.log('currentUrl:', this.currentUrl,'nextUrl:', this.nextUrl);
 
     let questionTypes = this.backendService.getQuestions();
-    console.log(questionTypes);
+    console.log('questionTypes',questionTypes);
     if (this.currentUrl === 'videoQ') {
       this.qType = questionTypes.videoQ;
     } else if (this.currentUrl === 'blockQ') {
@@ -36,7 +37,7 @@ export class GenericQuestionaireComponent implements OnInit {
     } else if (this.currentUrl === 'sessionQ') {
       this.qType = questionTypes.sessionQ;
     }
-
+    console.log('qType',this.qType);
 
     this.authService.getQuestionairesFromDatabase(this.qType).subscribe(
       (response: any) => {
@@ -98,8 +99,10 @@ export class GenericQuestionaireComponent implements OnInit {
 
     if (this.nextUrl === '/youtube' || this.nextUrl === '/session-end') {
       this.backendService.setNextVideoConfig();
+      console.log('setNextConfig')
     }
     this.router.navigate([this.nextUrl]);
+    console.log('router');
 
   }
 

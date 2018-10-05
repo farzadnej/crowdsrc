@@ -121,7 +121,7 @@ export class BackendService {
     return {"videoQ" : this.getVideoConfig().videoQuestionaire, "blockQ" : this.getVideoConfig().blockQuestionaire, "sessionQ" : this.getVideoConfig().sessionQuestionaire}
   }
 
-  getCurrentAndNextUrl(){
+/*  getCurrentAndNextUrl(){
     if (this.getVideoConfig().videoQuestionaire && this.current === ''){
       this.current = "videoQ";
       return [this.current,'/video-questionaire']
@@ -149,6 +149,52 @@ export class BackendService {
     }
 
 
+  }*/
+
+  getCurrentAndNextUrl(){
+    if (this.current === '') {
+      if (this.getVideoConfig().videoQuestionaire) {
+        if (this.getVideoConfig().blockQuestionaire) {
+          this.current = "blockQ";
+          return ["videoQ", '/block-questionaire']
+        } else if (this.getVideoConfig().sessionQuestionaire) {
+          this.current = "sessionQ";
+          return ["videoQ", '/session-questionaire']
+        } else {
+          this.current = '';
+          return ["videoQ", '/youtube']
+        }
+      }
+
+      if (this.getVideoConfig().blockQuestionaire) {
+        if (this.getVideoConfig().sessionQuestionaire) {
+          this.current = "sessionQ";
+          return ["blockQ", '/session-questionaire']
+        } else {
+          this.current = '';
+          return ["blockQ", '/youtube']
+        }
+      }
+
+      if (this.getVideoConfig().sessionQuestionaire) {
+          this.current = "";
+          return ["sessionQ", '/session-end']
+      }
+    }
+
+    if (this.current === 'blockQ') {
+        if (this.getVideoConfig().sessionQuestionaire) {
+          this.current = "sessionQ";
+          return ["blockQ", '/session-questionaire']
+        } else {
+          this.current = '';
+          return ["blockQ", '/youtube']
+        }
+    }
+    if (this.current === 'sessionQ') {
+        this.current = '';
+        return ["sessionQ", '/session-end']
+    }
   }
 
 

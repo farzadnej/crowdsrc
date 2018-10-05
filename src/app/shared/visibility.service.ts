@@ -15,11 +15,11 @@ export class VisibilityService {
     let visibilityChangeEvent = this.getVisibilityEvent(prefix);
 
     document.addEventListener(visibilityChangeEvent, function(e) {
-      console.log(e);
+      //console.log(e);
 
       // If the document is hidden we want to pause the video.
       if (document[hidden]) {
-        console.log('user not paying attention');
+        //console.log('user not paying attention');
         this.focusedUser = false;
 
         }
